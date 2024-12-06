@@ -19,12 +19,10 @@ export const ContentTable = ({ data }: DataType) => {
     {
       name: "account_currency",
       selector: (row: any) => row.account_currency,
-      sortable: true,
     },
     {
       name: "account_identifier",
       selector: (row: any) => row.account_identifier,
-      sortable: true,
     },
     {
       name: "account_name",
@@ -34,7 +32,6 @@ export const ContentTable = ({ data }: DataType) => {
     {
       name: "account_status",
       selector: (row: any) => row.account_status,
-      sortable: true,
     },
     {
       name: "account_type",
@@ -44,12 +41,10 @@ export const ContentTable = ({ data }: DataType) => {
     {
       name: "account_type_bank",
       selector: (row: any) => row.account_type_bank,
-      sortable: true,
     },
     {
       name: "system_account",
       selector: (row: any) => row.system_account,
-      sortable: true,
     },
     {
       name: "total_value",
