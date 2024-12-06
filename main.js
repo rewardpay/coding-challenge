@@ -77,11 +77,11 @@ const workingCapitalRatio = assets / liabilities;
 
 // printing the results
 const formatCurrency = (value) => {
-    return `$${value.toLocaleString()}`;
+    return `$${Math.round(value).toLocaleString()}`;
 };
 
 const formatPercentage = (value) => {
-    return `${(value * 100).toFixed(2)}%`;
+    return `${(value * 100).toFixed(1)}%`;
 };
 
 const yellowText = (text) => `\x1b[33m${text}\x1b[0m`;
