@@ -102,7 +102,7 @@ const MetricChart = ({
           height={100}
           tick={{
             dx: -8,
-            dy: 50,
+            dy: 10,
             fontSize: 12
           }}
         />
