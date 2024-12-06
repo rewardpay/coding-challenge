@@ -1,5 +1,9 @@
 # RewardPay Coding Challenge
 
+### Live Demo
+The project is live and can be accessed at:
+[https://coding-challenge-orcin.vercel.app/](https://coding-challenge-orcin.vercel.app/)
+
 ## Overview
 
 This project is a financial metrics calculator that processes general ledger data and displays key accounting metrics through an interactive dashboard. The application calculates and visualizes:
