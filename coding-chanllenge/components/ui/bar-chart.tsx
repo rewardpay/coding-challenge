@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from "recharts"
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -149,6 +150,32 @@ const MetricChart = ({
 )
 
 export function Barchart() {
+  const [activeChart, setActiveChart] = React.useState<string>("expenses")
+
+  const charts = {
+    revenue: { data: revenueData, title: "Revenue", total: metrics.revenue },
+    expenses: { data: expensesData, title: "Expenses", total: metrics.expenses },
+    grossProfit: { 
+      data: grossProfitData, 
+      title: "Gross Profit Margin", 
+      total: metrics.grossProfitMargin,
+      isPercentage: true 
+    },
+    netProfit: { 
+      data: netProfitData, 
+      title: "Net Profit Margin", 
+      total: metrics.netProfitMargin,
+      isPercentage: true 
+    },
+    workingCapital: { 
+      data: workingCapitalData, 
+      title: "Working Capital Ratio", 
+      total: metrics.workingCapitalRatio,
+      isPercentage: true,
+      isDouble: true 
+    }
+  }
+
   return (
     <Card className="w-full max-w-4xl mx-auto mt-8">
       <CardHeader>
@@ -156,36 +183,21 @@ export function Barchart() {
         <CardDescription>
           Key accounting metrics from the general ledger
         </CardDescription>
+        <div className="flex gap-2 mt-4">
+          {Object.entries(charts).map(([key, { title }]) => (
+            <Button
+              key={key}
+              variant={activeChart === key ? "default" : "outline"}
+              onClick={() => setActiveChart(key)}
+            >
+              {title}
+            </Button>
+          ))}
+        </div>
       </CardHeader>
-      <CardContent className="space-y-12">
+      <CardContent>
         <MetricChart 
-          title="Revenue"
-          data={revenueData} 
-          total={metrics.revenue}
-        />
-        <MetricChart 
-          title="Expenses"
-          data={expensesData} 
-          total={metrics.expenses}
-        />
-        <MetricChart 
-          title="Gross Profit Margin"
-          data={grossProfitData} 
-          isPercentage={true}
-          total={metrics.grossProfitMargin}
-        />
-        <MetricChart 
-          title="Net Profit Margin"
-          data={netProfitData} 
-          isPercentage={true}
-          total={metrics.netProfitMargin}
-        />
-        <MetricChart 
-          title="Working Capital Ratio"
-          data={workingCapitalData} 
-          isDouble={true}
-          isPercentage={true}
-          total={metrics.workingCapitalRatio}
+          {...charts[activeChart as keyof typeof charts]}
         />
       </CardContent>
     </Card>

@@ -7,8 +7,14 @@ First, run the development server:
 
 ```bash
 pnpm install 
+pnpm run dev
 
-pnpm dev
+```
+or 
+
+```bash
+npm install 
+npm run dev
 
 ```
 
