@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { calculateRevenue, calculateExpenses, calculateGrossProfit, calculateNetProfit } = require("../calculateMetrics");
+const { calculateRevenue, calculateExpenses, calculateGrossProfit, calculateNetProfit, calculateWorkingCapitalRatio } = require("../calculateMetrics");
 
 describe('Metric Calculation Tests', function() {
   
@@ -49,6 +49,14 @@ describe('Metric Calculation Tests', function() {
       const expense = calculateExpenses(data);
       const netProfitMargin = calculateNetProfit(revenue, expense);
       assert.strictEqual(parseFloat(netProfitMargin.toFixed(1)), 73.3);
+    });
+  });
+
+  describe('calculateWorkingCapitalRatio', function() {
+
+    it('should calculate working capital ratio correctly', function() {
+      const workingCapitalRatio = calculateWorkingCapitalRatio(data);
+      assert.strictEqual(workingCapitalRatio, 250);
     });
   });
 
