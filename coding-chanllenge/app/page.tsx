@@ -1,12 +1,9 @@
 // import Image from "next/image";
-import { Button } from "@/components/ui/button";
-
+import { Barchart } from "@/components/ui/bar-chart";
 export default function Home() {
   return (
-    
-      <div>
-        home
-        <Button>Click me</Button>
-      </div>
+    <div>
+      <Barchart />
+    </div>
   );
 }
