@@ -92,6 +92,7 @@ coding-chanllenge/        # <- You should be in this directory
 ## Features
 
 - Interactive dashboard with metric visualizations
+- Responsive design for various screen sizes
 
 ## Technical Stack
 
