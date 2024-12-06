@@ -8,14 +8,6 @@ const fs = require("fs");
 const data = fs.readFileSync("data.json", "utf8");
 const jsonData = JSON.parse(data).data;
 
-const formatCurrency = (value) => {
-  return `$${value.toLocaleString()}`;
-};
-
-const formatPercentage = (value) => {
-  return `${(value * 100).toFixed(2)}%`;
-};
-
 // calculating the revenue
 const revenue = jsonData
   .filter((record) => record.account_category === "revenue")
@@ -84,11 +76,33 @@ const liabilities = liabilitiesCredit - liabilitiesDebit;
 const workingCapitalRatio = assets / liabilities;
 
 // printing the results
+const formatCurrency = (value) => {
+    return `$${value.toLocaleString()}`;
+};
+
+const formatPercentage = (value) => {
+    return `${(value * 100).toFixed(2)}%`;
+};
+
 const yellowText = (text) => `\x1b[33m${text}\x1b[0m`;
 const greenText = (text) => `\x1b[32m${text}\x1b[0m`;
 
 console.log(`${greenText("Revenue:")} ${yellowText(formatCurrency(revenue))}`);
-console.log(`${greenText("Expenses:")} ${yellowText(formatCurrency(expenses))}`);
-console.log(`${greenText("Gross Profit Margin:")} ${yellowText(formatPercentage(grossProfitMargin))}`);
-console.log(`${greenText("Net Profit Margin:")} ${yellowText(formatPercentage(netProfitMargin))}`);
-console.log(`${greenText("Working Capital Ratio:")} ${yellowText(formatPercentage(workingCapitalRatio))}`);
+console.log(
+  `${greenText("Expenses:")} ${yellowText(formatCurrency(expenses))}`
+);
+console.log(
+  `${greenText("Gross Profit Margin:")} ${yellowText(
+    formatPercentage(grossProfitMargin)
+  )}`
+);
+console.log(
+  `${greenText("Net Profit Margin:")} ${yellowText(
+    formatPercentage(netProfitMargin)
+  )}`
+);
+console.log(
+  `${greenText("Working Capital Ratio:")} ${yellowText(
+    formatPercentage(workingCapitalRatio)
+  )}`
+);
