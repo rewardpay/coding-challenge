@@ -1,40 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RewardPay Coding Challenge
+
+## Overview
+
+This project is a financial metrics calculator that processes general ledger data and displays key accounting metrics through an interactive dashboard. The application calculates and visualizes:
+
+1. Revenue
+2. Expenses
+3. Gross Profit Margin
+4. Net Profit Margin
+5. Working Capital Ratio
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js (v18 or higher)
+- npm or pnpm package manager
+
+### Installation
+
+1. Clone the repository:
 
 ```bash
-pnpm install 
-pnpm run dev
-
+git clone https://github.com/xuqinzhe111/coding-challenge.git
 ```
-or 
+
+2. Navigate to the project directory:
 
 ```bash
-npm install 
+cd coding-chanllenge    # Important: All commands must be run from this directory
+```
+
+3. Install dependencies:
+
+```bash
+npm install
+# or
+pnpm install
+```
+
+> ⚠️ **Important**: All commands must be run from the `coding-chanllenge` directory, not the root directory.
+
+### Running the Application
+
+1. Ensure you're in the correct directory:
+
+```bash
+pwd    # Should end with /coding-chanllenge
+```
+
+2. Start the development server:
+
+```bash
 npm run dev
-
+# or
+pnpm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Running Tests
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Ensure you're in the `coding-chanllenge` directory, then:
 
-## Learn More
+To run the test suite:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm test
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To run tests in watch mode:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm test -- --watch
+```
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+coding-chanllenge/        # <- You should be in this directory
+├── app/                  # Next.js app directory
+├── components/           # React components
+├── lib/                  # Core business logic
+|    └──  _tests_/        # Test files
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Features
+
+- Interactive dashboard with metric visualizations
+
+## Technical Stack
+
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- Recharts for data visualization
+- Jest for testing
+
+## Development
+
+The page auto-updates as you edit files. The project uses:
+- [Next.js](https://nextjs.org/) for the framework
+- [Tailwind CSS](https://tailwindcss.com/) for styling
+- [shadcn/ui](https://ui.shadcn.com/) for UI components
+- [Recharts](https://recharts.org/) for charts
+
+
+
+
+
+
+
+
+
+
+
+
