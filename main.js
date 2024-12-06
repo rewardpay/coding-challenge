@@ -39,8 +39,56 @@ const grossProfitMargin = salesDebit / revenue;
 const netProfitMargin = (revenue - expenses) / revenue;
 
 // calculating the working capital ratio
+const assetsDebit = jsonData
+  .filter(
+    (record) =>
+      record.account_category === "assets" &&
+      record.value_type === "debit" &&
+      ["current", "bank", "current_accounts_receivable"].includes(
+        record.account_type
+      )
+  )
+  .reduce((sum, record) => sum + record.total_value, 0);
 
-console.log(`Revenue: ${formatCurrency(revenue)}`);
-console.log(`Expenses: ${formatCurrency(expenses)}`);
-console.log(`Gross Profit Margin: ${formatPercentage(grossProfitMargin)}`);
-console.log(`Net Profit Margin: ${formatPercentage(netProfitMargin)}`);
+const assetsCredit = jsonData
+  .filter(
+    (record) =>
+      record.account_category === "assets" &&
+      record.value_type === "credit" &&
+      ["current", "bank", "current_accounts_receivable"].includes(
+        record.account_type
+      )
+  )
+  .reduce((sum, record) => sum + record.total_value, 0);
+
+const liabilitiesDebit = jsonData
+  .filter(
+    (record) =>
+      record.account_category === "liability" &&
+      record.value_type === "debit" &&
+      ["current", "current_accounts_payable"].includes(record.account_type)
+  )
+  .reduce((sum, record) => sum + record.total_value, 0);
+
+const liabilitiesCredit = jsonData
+  .filter(
+    (record) =>
+      record.account_category === "liability" &&
+      record.value_type === "credit" &&
+      ["current", "current_accounts_payable"].includes(record.account_type)
+  )
+  .reduce((sum, record) => sum + record.total_value, 0);
+
+const assets = assetsDebit - assetsCredit;
+const liabilities = liabilitiesCredit - liabilitiesDebit;
+const workingCapitalRatio = assets / liabilities;
+
+// printing the results
+const yellowText = (text) => `\x1b[33m${text}\x1b[0m`;
+const greenText = (text) => `\x1b[32m${text}\x1b[0m`;
+
+console.log(`${greenText("Revenue:")} ${yellowText(formatCurrency(revenue))}`);
+console.log(`${greenText("Expenses:")} ${yellowText(formatCurrency(expenses))}`);
+console.log(`${greenText("Gross Profit Margin:")} ${yellowText(formatPercentage(grossProfitMargin))}`);
+console.log(`${greenText("Net Profit Margin:")} ${yellowText(formatPercentage(netProfitMargin))}`);
+console.log(`${greenText("Working Capital Ratio:")} ${yellowText(formatPercentage(workingCapitalRatio))}`);
