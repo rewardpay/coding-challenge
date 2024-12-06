@@ -19,7 +19,7 @@ function calculateTotalByCondition(
  * console.log(revenue); // 150000
  */
 export function calculateTotalRevenue(financialRecords: DataItem[]): number {
-  return calculateTotalByCondition(financialRecords, 
+  return calculateTotalByCondition(financialRecords,
     (record) => record.account_category === "revenue");
 }
 
@@ -32,7 +32,7 @@ export function calculateTotalRevenue(financialRecords: DataItem[]): number {
  * console.log(expenses); // 75000
  */
 export function calculateTotalExpenses(financialRecords: DataItem[]): number {
-  return calculateTotalByCondition(financialRecords, 
+  return calculateTotalByCondition(financialRecords,
     (record) => record.account_category === "expense");
 }
 
@@ -61,7 +61,6 @@ export function calculateGrossProfitMargin(
     data,
     (item) => item.account_type === "sales" && item.value_type === "debit"
   );
-  console.log(salesTotal, revenue);
   return (salesTotal / revenue) * 100;
 }
 
