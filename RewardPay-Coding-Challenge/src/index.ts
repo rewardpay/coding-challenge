@@ -1,5 +1,6 @@
 import jsonfile from "jsonfile";
 import {revenueCalculation, expensesCalculation, grossProfitMarginCalculation, netProfitMarginCalculation, workingCapitalRatioCalculation} from "./calculations"
+import { dollarFormatting, percentageFormatting } from "../utils/formatUtils";
 
 // Path for the data file
 const filePath = "./data/data.json";
@@ -12,23 +13,25 @@ const data = jsonData.data;
 
 // Calculating the revenue
 const revenue = revenueCalculation(data);
-console.log(revenue);
 
 // Calculating the expenses
 const expenses = expensesCalculation(data);
-console.log(expenses);
 
 // Calculating the gross profit margin
 const grossProfitMargin = grossProfitMarginCalculation(data, revenue);
-console.log(grossProfitMargin);
 
 // Calculating the net profit margin
 const netProfitMargin = netProfitMarginCalculation(expenses, revenue);
-console.log(netProfitMargin);
 
 // Calculating the working capital ratio
 const workingCapitalRatio = workingCapitalRatioCalculation(data);
-console.log(workingCapitalRatio);
+
+
+console.log(`Revenue: ${dollarFormatting(revenue)}`);
+console.log(`Expenses: ${dollarFormatting(expenses)}`);
+console.log(`Gross Profit Margin: ${percentageFormatting(grossProfitMargin)}`)
+console.log(`Net Profit Margin: ${percentageFormatting(netProfitMargin)}`)
+console.log(`Working Capital Ratio: ${percentageFormatting(workingCapitalRatio)}`)
 
 
 
