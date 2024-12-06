@@ -10,44 +10,22 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { calculateMetrics, getMetricBreakdowns } from "@/lib/calculate-metrics"
+import Loading from "@/components/ui/loading"
 
-const metrics = calculateMetrics()
-const breakdowns = getMetricBreakdowns()
+interface ChartData {
+  name: string;
+  value?: number;
+  assets?: number;
+  liabilities?: number;
+}
 
-// Format data for each chart
-const revenueData = breakdowns.revenue.map(item => ({
-  name: item.account_name,
-  value: item.total_value
-}))
-
-const expensesData = breakdowns.expenses.map(item => ({
-  name: item.account_name,
-  value: item.total_value
-}))
-
-const grossProfitData = breakdowns.grossProfit.map(item => ({
-  name: item.account_name,
-  value: (item.total_value / metrics.revenue) * 100
-}))
-
-const netProfitData = breakdowns.netProfit.map(item => ({
-  name: item.account_name,
-  value: (item.total_value / metrics.revenue) * 100
-}))
-
-const workingCapitalData = [
-  ...breakdowns.currentAssets.map(item => ({
-    name: item.account_name,
-    assets: item.total_value,
-    liabilities: 0
-  })),
-  ...breakdowns.currentLiabilities.map(item => ({
-    name: item.account_name,
-    assets: 0,
-    liabilities: item.total_value
-  }))
-]
+interface ChartConfig {
+  data: ChartData[];
+  title: string;
+  total: number;
+  isPercentage?: boolean;
+  isDouble?: boolean;
+}
 
 const formatValue = (value: number, isPercentage: boolean) => {
   if (isPercentage) {
@@ -56,28 +34,13 @@ const formatValue = (value: number, isPercentage: boolean) => {
   return `$${value.toLocaleString()}`
 }
 
-// Add this interface near the top of the file
-interface ChartData {
-  name: string;
-  value?: number;
-  assets?: number;
-  liabilities?: number;
-}
-
-// Update the MetricChart props type
 const MetricChart = ({ 
   data, 
   title,
   isPercentage = false,
   isDouble = false,
   total,
-}: { 
-  data: ChartData[];  // Replace any[] with ChartData[]
-  title: string;
-  isPercentage?: boolean;
-  isDouble?: boolean;
-  total: number;
-}) => (
+}: ChartConfig) => (
   <div>
     <h3 className="text-lg font-semibold mb-2">
       {title}: {formatValue(total, isPercentage)}
@@ -103,7 +66,7 @@ const MetricChart = ({
           height={100}
           tick={{
             dx: -8,
-            dy: 10,
+            dy: 50,
             fontSize: 12
           }}
         />
@@ -151,29 +114,26 @@ const MetricChart = ({
 
 export function Barchart() {
   const [activeChart, setActiveChart] = React.useState<string>("expenses")
+  const [charts, setCharts] = React.useState<Record<string, ChartConfig>>({})
+  const [loading, setLoading] = React.useState(true)
 
-  const charts = {
-    revenue: { data: revenueData, title: "Revenue", total: metrics.revenue },
-    expenses: { data: expensesData, title: "Expenses", total: metrics.expenses },
-    grossProfit: { 
-      data: grossProfitData, 
-      title: "Gross Profit Margin", 
-      total: metrics.grossProfitMargin,
-      isPercentage: true 
-    },
-    netProfit: { 
-      data: netProfitData, 
-      title: "Net Profit Margin", 
-      total: metrics.netProfitMargin,
-      isPercentage: true 
-    },
-    workingCapital: { 
-      data: workingCapitalData, 
-      title: "Working Capital Ratio", 
-      total: metrics.workingCapitalRatio,
-      isPercentage: true,
-      isDouble: true 
-    }
+  React.useEffect(() => {
+    fetch('/api/metrics')
+      .then(res => res.json())
+      .then(data => {
+        setCharts(data.charts)
+        setLoading(false)
+      })
+      .catch(err => {
+        console.error('Failed to fetch metrics:', err)
+        setLoading(false)
+      })
+  }, [])
+
+  if (loading) {
+    return <div className="flex h-screen justify-center items-center">
+        <Loading />
+    </div>
   }
 
   return (
@@ -196,9 +156,9 @@ export function Barchart() {
         </div>
       </CardHeader>
       <CardContent>
-        <MetricChart 
-          {...charts[activeChart as keyof typeof charts]}
-        />
+        {charts[activeChart] && (
+          <MetricChart {...charts[activeChart]} />
+        )}
       </CardContent>
     </Card>
   )
