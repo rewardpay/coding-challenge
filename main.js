@@ -8,8 +8,9 @@ const formatCurrency = (value) => {
 };
 
 const formatPercentage = (value) => {
-    return `${value.toFixed(1)}%`;
+    return Number.isInteger(value) ? `${value}%` : `${value.toFixed(1)}%`;
 };
+
 
 const revenue = metrics.calculateRevenue(data.data);
 const expenses = metrics.calculateExpenses(data.data);
