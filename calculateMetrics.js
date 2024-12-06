@@ -24,5 +24,11 @@ exports.calculateGrossProfit = (data, revenue) => {
     const grossProfit = (salesDebitValue / revenue) * 100;
     return grossProfit;
 };
-  
+
+exports.calculateNetProfit = (revenue, expenses) => {
+   
+    const netProfit = ((revenue - expenses) / revenue ) * 100;
+    return netProfit;
+};
+
 
