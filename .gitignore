@@ -1,0 +1,36 @@
+# Node dependencies and package management
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+
+# Runtime logs and debug files
+logs/
+*.log
+logs/*.log
+
+# Local environment configurations
+.env
+.env.local
+.env.*.local
+
+# Operating system specific files
+## macOS system files
+.DS_Store
+## Windows system files
+Thumbs.db
+desktop.ini
+
+# Development tool configurations
+## VS Code
+.vscode/
+## JetBrains IDEs
+.idea/
+## Vim swap files
+*.swp
+
+# Testing and coverage reports
+coverage/
