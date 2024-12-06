@@ -4,7 +4,8 @@
   "description": "RewardPay coding challenge by Kateryna Bilokur",
   "main": "index.js",
   "scripts": {
-    "test": "vitest"
+    "test": "vitest",
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "Kateryna Bilokur",
