@@ -1,5 +1,5 @@
 import jsonfile from "jsonfile";
-import {revenueCalculation} from "./calculations"
+import {revenueCalculation, expensesCalculation} from "./calculations"
 
 // Path for the data file
 const filePath = "./data/data.json";
@@ -13,5 +13,7 @@ const data = jsonData.data;
 // Calculating the revenue
 const revenue = revenueCalculation(data);
 
+// Calculating the expenses
+const expenses = expensesCalculation(data);
 
 
