@@ -13,3 +13,13 @@ exports.calculateRevenue = (data) => {
    
 };
 
+exports.calculateExpenses = (data) => {
+    const expenses = data
+                    .filter(item => item.account_category === 'expense')
+                    .reduce((sum, item) => sum + item.total_value, 0);
+
+    const formattedExpenses = formatCurrency(expenses);
+    return formattedExpenses;
+};
+  
+
