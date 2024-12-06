@@ -55,6 +55,15 @@ const formatValue = (value: number, isPercentage: boolean) => {
   return `$${value.toLocaleString()}`
 }
 
+// Add this interface near the top of the file
+interface ChartData {
+  name: string;
+  value?: number;
+  assets?: number;
+  liabilities?: number;
+}
+
+// Update the MetricChart props type
 const MetricChart = ({ 
   data, 
   title,
@@ -62,7 +71,7 @@ const MetricChart = ({
   isDouble = false,
   total,
 }: { 
-  data: any[];
+  data: ChartData[];  // Replace any[] with ChartData[]
   title: string;
   isPercentage?: boolean;
   isDouble?: boolean;
