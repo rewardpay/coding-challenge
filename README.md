@@ -24,7 +24,7 @@ A TypeScript-base application for calculation key accounting metrics from finani
    ```
 2. Install Dependencies:
    
-  ```bash
+   ```bash
    npm i
    ```
 
@@ -88,7 +88,7 @@ All currency figures must be formatted as follows:
 
 All percentage values must be formatted to one decimal digit and be prefixed with a `%` sign.  Don't forget to multiply by 100 each time you're tasked with calculating a percentage value.
 
-## Example
+## Example outcome
 
 Below is what a typical output should look like.  Please note this is *not* the output of the challenge but a mere example.
 
