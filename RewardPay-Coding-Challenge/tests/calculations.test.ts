@@ -1,7 +1,8 @@
-import { expensesCalculation, grossProfitMarginCalculation, netProfitMarginCalculation, revenueCalculation } from "../src/calculations";
+import { expensesCalculation, grossProfitMarginCalculation, netProfitMarginCalculation, revenueCalculation, workingCapitalRatioCalculation } from "../src/calculations";
 import { ExpensesRecord } from "../types/ExpensesRecord";
 import { GrossProfitMarginRecord } from "../types/GrossProfitMarginRecord";
 import { RevenueRecord } from "../types/RevenueRecord";
+import { WorkingCapitalRatioRecord } from "../types/WorkingCapitalRatioRecord";
 
 /**
  * Test Cases for Revenue Calculation
@@ -209,6 +210,74 @@ test("NET-CASE-3: Calculates the net profit margin FAILED, DIVIDED BY NEGATIVE",
         "RANDOM ERROR!"
     );
 
+    
+})
+
+/**
+ * Test Cases for Working Capital Ratio Calculation
+ */
+
+test("WORKING-CASE-1: Calculates the working capital ratio CORRECTLY", () => {
+    const workingMock: WorkingCapitalRatioRecord [] = [
+        { "account_category": "assets", "value_type": "debit", "total_value": 300, "account_type": "current"},
+        { "account_category": "assets", "value_type": "debit","total_value": 200, "account_type": "bank"},
+        { "account_category": "assets", "value_type": "credit","total_value": 100, "account_type": "current_accounts_receivable"},
+        { "account_category": "liability", "value_type": "credit", "total_value": 200, "account_type": "current"},
+        { "account_category": "liability", "value_type": "debit", "total_value": 100, "account_type": "current_accounts_payable"}
+    ];
+
+    expect(workingCapitalRatioCalculation(workingMock)).toBe(4);
+    
+})
+
+test("WORKING-CASE-2: Calculates the working capital ratio INCORRECTLY", () => {
+    const workingMock: WorkingCapitalRatioRecord [] = [
+        { "account_category": "assets", "value_type": "debit", "total_value": 300, "account_type": "current"},
+        { "account_category": "assets", "value_type": "credit","total_value": 200, "account_type": "bank"},
+        { "account_category": "assets", "value_type": "credit","total_value": 100, "account_type": "current_accounts_receivable"},
+        { "account_category": "liability", "value_type": "credit", "total_value": 200, "account_type": "current"},
+        { "account_category": "liability", "value_type": "debit", "total_value": 100, "account_type": "current_accounts_payable"}
+    ];
+
+    expect(workingCapitalRatioCalculation(workingMock)).not.toBe(4);
+    
+})
+
+test("WORKING-CASE-3: Calculates the working capital ratio FAILED, DIVIDED BY ZERO", () => {
+    const workingMock: WorkingCapitalRatioRecord [] = [
+        { "account_category": "assets", "value_type": "debit", "total_value": 300, "account_type": "current"},
+        { "account_category": "assets", "value_type": "credit","total_value": 200, "account_type": "bank"},
+        { "account_category": "assets", "value_type": "credit","total_value": 100, "account_type": "current_accounts_receivable"},
+        { "account_category": "liability", "value_type": "credit", "total_value": 100, "account_type": "current"},
+        { "account_category": "liability", "value_type": "debit", "total_value": 100, "account_type": "current_accounts_payable"}
+    ];
+
+    expect(() => workingCapitalRatioCalculation(workingMock)).toThrow(
+        "Working Capital Ratio cannot be calculated with a liability which is smaller or equal to 0 !!"
+    );
+
+    expect(() => workingCapitalRatioCalculation(workingMock)).not.toThrow(
+        "RANDOM ERROR!"
+    );
+    
+})
+
+test("WORKING-CASE-4: Calculates the working capital ratio FAILED, DIVIDED BY NEGATIVE", () => {
+    const workingMock: WorkingCapitalRatioRecord [] = [
+        { "account_category": "assets", "value_type": "debit", "total_value": 300, "account_type": "current"},
+        { "account_category": "assets", "value_type": "credit","total_value": 200, "account_type": "bank"},
+        { "account_category": "assets", "value_type": "credit","total_value": 100, "account_type": "current_accounts_receivable"},
+        { "account_category": "liability", "value_type": "credit", "total_value": 100, "account_type": "current"},
+        { "account_category": "liability", "value_type": "debit", "total_value": 200, "account_type": "current_accounts_payable"}
+    ];
+
+    expect(() => workingCapitalRatioCalculation(workingMock)).toThrow(
+        "Working Capital Ratio cannot be calculated with a liability which is smaller or equal to 0 !!"
+    );
+
+    expect(() => workingCapitalRatioCalculation(workingMock)).not.toThrow(
+        "RANDOM ERROR!"
+    );
     
 })
 

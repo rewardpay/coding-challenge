@@ -1,5 +1,5 @@
 import jsonfile from "jsonfile";
-import {revenueCalculation, expensesCalculation, grossProfitMarginCalculation, netProfitMarginCalculation} from "./calculations"
+import {revenueCalculation, expensesCalculation, grossProfitMarginCalculation, netProfitMarginCalculation, workingCapitalRatioCalculation} from "./calculations"
 
 // Path for the data file
 const filePath = "./data/data.json";
@@ -25,6 +25,10 @@ console.log(grossProfitMargin);
 // Calculating the net profit margin
 const netProfitMargin = netProfitMarginCalculation(expenses, revenue);
 console.log(netProfitMargin);
+
+// Calculating the working capital ratio
+const workingCapitalRatio = workingCapitalRatioCalculation(data);
+console.log(workingCapitalRatio);
 
 
 
