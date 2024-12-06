@@ -10,9 +10,7 @@ The solutions contain two main files including main.js and main.test.js
 - Please install all dependencies using `npm install`
 - Run `npm test` to test and show the test result
 
-Regard to notes in the code for details.
-
-Any problem please get in touch with me at anhtuan128@gmail.com.
+Regard to notes in the code for details. Any problem please get in touch with me at anhtuan128@gmail.com.
 
 __Thank you!!! 🙏__
 
