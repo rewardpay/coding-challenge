@@ -1,5 +1,4 @@
-// the code is using fs to read the file
-// run the code using nodejs
+// the code is using nodejs
 // visit https://nodejs.org/en for details
 // type `node main` in the terminal to run the code
 
