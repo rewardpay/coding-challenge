@@ -13,30 +13,34 @@ const formatCurrency = (value) => {
 };
 
 const formatPercentage = (value) => {
-    return `${(value * 100).toFixed(2)}%`;
+  return `${(value * 100).toFixed(2)}%`;
 };
 
+// calculating the revenue
 const revenue = jsonData
   .filter((record) => record.account_category === "revenue")
   .reduce((sum, record) => sum + record.total_value, 0);
 
+// calculating the expenses
 const expenses = jsonData
   .filter((record) => record.account_category === "expense")
-  .reduce((sum, record) => sum + record.total_value, 0)
-
-const totalValueSales = jsonData
-  .filter((record) => record.account_type === "sales")
   .reduce((sum, record) => sum + record.total_value, 0);
 
-const totalValueDebit = jsonData
-  .filter((record) => record.value_type === "debit")
+// calculating the gross profit margin
+const salesDebit = jsonData
+  .filter(
+    (record) => record.account_type === "sales" && record.value_type === "debit"
+  )
   .reduce((sum, record) => sum + record.total_value, 0);
 
-const grossProfitMargin = (totalValueSales + totalValueDebit) / revenue;
+const grossProfitMargin = salesDebit / revenue;
+
+// calculating the net profit margin
+const netProfitMargin = (revenue - expenses) / revenue;
+
+// calculating the working capital ratio
 
 console.log(`Revenue: ${formatCurrency(revenue)}`);
 console.log(`Expenses: ${formatCurrency(expenses)}`);
 console.log(`Gross Profit Margin: ${formatPercentage(grossProfitMargin)}`);
-
-console.log(totalValueSales)
-console.log(totalValueDebit)
+console.log(`Net Profit Margin: ${formatPercentage(netProfitMargin)}`);
