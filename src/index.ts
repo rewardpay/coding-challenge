@@ -1,1 +1,4 @@
-console.log("Hello RewardPay");
+import { readData } from "./dataLoader";
+
+const data=readData("data/data.json")
+console.log(data);
