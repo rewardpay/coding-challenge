@@ -1,3 +1,20 @@
+# Solution to the challenge
+The solutions contain two main files including main.js and main.test.js
+
+## To run the code
+- Running the code requires nodejs
+- Run `node main` in the terminal to run the code
+
+## For testing 
+
+- Please install all dependencies using `npm install`
+- Run `npm test` to test and show the test result
+
+Regard to notes in the code for details
+Any problem please get in touch with me at anhtuan128@gmail.com
+
+__Thank you!!! 🙏__
+
 # RewardPay Coding Challenge
 
 ## Overview
@@ -93,3 +110,4 @@ Working Capital Ratio: 95%
 If your program requires a special way to compile or a specific version of a toolset, please be sure to include that in your running instructions.
 
 __Thank you and good luck!__
+

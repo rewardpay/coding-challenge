@@ -2,7 +2,7 @@
 // visit https://nodejs.org/en for details
 // type `node main` in the terminal to run the code
 
-const fs = require("fs");
+import fs from "fs";
 
 // reading the file
 var jsonData;
@@ -15,33 +15,37 @@ try {
 }
 
 // calculating the revenue
-const revenue = jsonData
-  .filter((record) => record.account_category === "revenue")
-  .reduce((sum, record) => sum + record.total_value, 0);
+const revenue = (jsonData) => {
+  return jsonData
+    .filter((record) => record.account_category === "revenue")
+    .reduce((sum, record) => sum + record.total_value, 0);
+};
 
 // calculating the expenses
-const expenses = jsonData
-  .filter((record) => record.account_category === "expense")
-  .reduce((sum, record) => sum + record.total_value, 0);
+const expenses = (jsonData) => {
+  return jsonData
+    .filter((record) => record.account_category === "expense")
+    .reduce((sum, record) => sum + record.total_value, 0);
+};
 
 // calculating the gross profit margin
-
-const grossProfitMargin = () => {
+const grossProfitMargin = (jsonData) => {
   const salesDebit = jsonData
     .filter(
       (record) =>
         record.account_type === "sales" && record.value_type === "debit"
     )
     .reduce((sum, record) => sum + record.total_value, 0);
-  return (salesDebit / revenue) * 100;
+  return (salesDebit / revenue(jsonData)) * 100;
 };
 
 // calculating the net profit margin
-const netProfitMargin = (revenue - expenses) / revenue;
+const netProfitMargin = (jsonData) => {
+  return (revenue(jsonData) - expenses(jsonData)) / revenue(jsonData);
+};
 
 // calculating the working capital ratio
-
-const workingCapitalRatio = () => {
+const workingCapitalRatio = (jsonData) => {
   const assetsDebit = jsonData
     .filter(
       (record) =>
@@ -99,22 +103,26 @@ const formatPercentage = (value) => {
 const yellowText = (text) => `\x1b[33m${text}\x1b[0m`;
 const greenText = (text) => `\x1b[32m${text}\x1b[0m`;
 
-console.log(`${greenText("Revenue:")} ${yellowText(formatCurrency(revenue))}`);
 console.log(
-  `${greenText("Expenses:")} ${yellowText(formatCurrency(expenses))}`
+  `${greenText("Revenue:")} ${yellowText(formatCurrency(revenue(jsonData)))}`
+);
+console.log(
+  `${greenText("Expenses:")} ${yellowText(formatCurrency(expenses(jsonData)))}`
 );
 console.log(
   `${greenText("Gross Profit Margin:")} ${yellowText(
-    formatPercentage(grossProfitMargin())
+    formatPercentage(grossProfitMargin(jsonData))
   )}`
 );
 console.log(
   `${greenText("Net Profit Margin:")} ${yellowText(
-    formatPercentage(netProfitMargin)
+    formatPercentage(netProfitMargin(jsonData))
   )}`
 );
 console.log(
   `${greenText("Working Capital Ratio:")} ${yellowText(
-    formatPercentage(workingCapitalRatio())
+    formatPercentage(workingCapitalRatio(jsonData))
   )}`
 );
+
+export { revenue, expenses, grossProfitMargin, netProfitMargin, workingCapitalRatio };
