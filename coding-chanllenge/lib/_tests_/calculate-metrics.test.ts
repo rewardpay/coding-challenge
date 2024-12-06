@@ -46,13 +46,13 @@ describe('Financial Metrics Calculations', () => {
 
   describe('Revenue Calculation', () => {
     test('should calculate total revenue correctly', () => {
-      expect(metrics.revenue).toBe(1000.00);
+      expect(metrics.revenue).toBe(1000);
     });
   });
 
   describe('Expenses Calculation', () => {
     test('should calculate total expenses correctly', () => {
-      expect(metrics.expenses).toBe(300.00);
+      expect(metrics.expenses).toBe(300);
     });
   });
 
