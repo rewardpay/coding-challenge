@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { calculateRevenue, calculateExpenses } = require("../calculateMetrics");
+const { calculateRevenue, calculateExpenses, calculateGrossProfit } = require("../calculateMetrics");
 
 describe('Metric Calculation Tests', function() {
   
@@ -25,6 +25,21 @@ describe('Metric Calculation Tests', function() {
       const revenue = calculateExpenses(data);
       assert.strictEqual(revenue, 80);
     });
+  });
+
+  describe('calculateGrossprofitMargin', function() {
+
+    it('should calculate gross profit margin correctly', function() {
+      const revenue = calculateRevenue(data);
+      const grossProfitMargin = calculateGrossProfit(data, revenue);
+      assert.strictEqual(grossProfitMargin, 100);
+    });
+
+    it('should be infinity if revenue is zero', function() {
+        const revenue = 0;
+        const grossProfit = calculateGrossProfit(data, revenue);
+        assert.strictEqual(grossProfit, Infinity);
+      });
   });
 
  
