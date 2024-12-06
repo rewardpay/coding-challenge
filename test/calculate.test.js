@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { calculateRevenue } = require("../calculateMetrics");
+const { calculateRevenue, calculateExpenses } = require("../calculateMetrics");
 
 describe('Metric Calculation Tests', function() {
   
@@ -17,6 +17,13 @@ describe('Metric Calculation Tests', function() {
     it('should calculate total revenue correctly', function() {
       const revenue = calculateRevenue(data);
       assert.strictEqual(revenue, 300);
+    });
+  });
+
+  describe('calculateExpenses', function() {
+    it('should calculate total expense correctly', function() {
+      const revenue = calculateExpenses(data);
+      assert.strictEqual(revenue, 80);
     });
   });
 
