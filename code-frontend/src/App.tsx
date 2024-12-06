@@ -4,7 +4,7 @@ import { ContentHeader } from "./components/ContentHeader/ContentHeader";
 import { ContentTable } from "./components/ContentTable/ContentTable";
 import { ContentDisplay } from "./components/ContentDisplay/ContentDisplay";
 import { getData } from "./api/getData";
-type DataElementType = {
+export type DataElementType = {
   account_category: string;
   account_code: string;
   account_currency: string;
@@ -13,13 +13,13 @@ type DataElementType = {
   value_type: string;
   account_name: string;
   account_type: string;
-  account_type_bank?: string;
-  system_account?: string;
+  account_type_bank: string;
+  system_account: string;
   total_value: number;
 };
-type DataType = any;
+export type DataType = DataElementType[] | null;
 function App() {
-  const [data, setData] = useState<DataType>(null);
+  const [data, setData] = useState<DataType | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +36,7 @@ function App() {
     <ContentWrapper>
       <ContentHeader title="Jiazhen's Code Tesing" />
       <ContentTable data={data}></ContentTable>
-      <ContentDisplay />
+      <ContentDisplay data={data} />
     </ContentWrapper>
   );
 }
