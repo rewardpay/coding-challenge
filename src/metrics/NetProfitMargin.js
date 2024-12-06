@@ -1,3 +1,4 @@
+import { formatPercentage } from "../util/Formater.js";
 import { ReadDataFile } from "../util/ReadDataFile.js";
 
 export const NetProfitMargin = (callback) => {
@@ -20,6 +21,6 @@ export const NetProfitMargin = (callback) => {
       .reduce((sum, value) => sum + value, 0);
 
     const netProfitMargin = ((revenue - expenses) / revenue) * 100;
-    callback(null, netProfitMargin);
+    callback(null, formatPercentage(netProfitMargin));
   });
 };

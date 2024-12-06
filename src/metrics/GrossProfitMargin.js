@@ -1,3 +1,4 @@
+import { formatPercentage } from "../util/Formater.js";
 import { ReadDataFile } from "../util/ReadDataFile.js";
 
 export const GrossProfitMargin = (callback) => {
@@ -23,6 +24,6 @@ export const GrossProfitMargin = (callback) => {
 
     const grossProfitMargin = (salesTotal / revenue) * 100;
 
-    return callback(null, grossProfitMargin);
+    return callback(null, formatPercentage(grossProfitMargin));
   });
 };

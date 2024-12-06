@@ -1,3 +1,4 @@
+import { formatPercentage } from "../util/Formater.js";
 import { ReadDataFile } from "../util/ReadDataFile.js";
 
 export const WorkingCapitalRatio = (callback) => {
@@ -55,6 +56,6 @@ export const WorkingCapitalRatio = (callback) => {
 
     const liabilities = creditLiabilities - debitLiabilities;
     const workingcapitalratio = (assets / liabilities) * 100;
-    callback(null, workingcapitalratio);
+    callback(null, formatPercentage(workingcapitalratio));
   });
 };

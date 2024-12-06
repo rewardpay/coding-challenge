@@ -1,3 +1,4 @@
+import { formatCurrency } from "../util/Formater.js";
 import { ReadDataFile } from "../util/ReadDataFile.js";
 
 export const Expenses = (callback) => {
@@ -13,6 +14,6 @@ export const Expenses = (callback) => {
       .map((item) => item.total_value)
       .reduce((sum, value) => sum + value, 0);
 
-    return callback(null, expenses);
+    return callback(null, formatCurrency(expenses));
   });
 };
