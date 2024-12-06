@@ -24,6 +24,7 @@ Ensure you have the following installed on your machine:
     Switch to the `feature-coding-challenge-solution` branch, which contains the solution to the coding challenge:
 
    ```bash
+   cd coding-challenge
    git checkout feature-coding-challenge-solution
    ```
 
