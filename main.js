@@ -5,8 +5,15 @@
 
 const fs = require("fs");
 
-const data = fs.readFileSync("data.json", "utf8");
-const jsonData = JSON.parse(data).data;
+// reading the file
+var jsonData;
+
+try {
+  const data = fs.readFileSync("data.json", "utf8");
+  jsonData = JSON.parse(data).data;
+} catch (error) {
+  console.log("Data file is not found");
+}
 
 // calculating the revenue
 const revenue = jsonData
@@ -77,11 +84,11 @@ const workingCapitalRatio = assets / liabilities;
 
 // printing the results
 const formatCurrency = (value) => {
-    return `$${Math.round(value).toLocaleString()}`;
+  return `$${Math.round(value).toLocaleString()}`;
 };
 
 const formatPercentage = (value) => {
-    return `${(value * 100).toFixed(1)}%`;
+  return `${(value * 100).toFixed(1)}%`;
 };
 
 const yellowText = (text) => `\x1b[33m${text}\x1b[0m`;
