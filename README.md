@@ -55,7 +55,28 @@ npm start
 
 ### Calculate Metrics:
 
-On running the app, it will read the `data.json` file from `data` folder, do the accounting metrics calculations and output key financial metrics to the `results.txt` file in `output` folder.
+On running the app, it will read the `data.json` file from `data` folder, do the accounting metrics calculations and output key financial metrics to the `result.txt` file in `output` folder.
+
+To view calculated metrics run
+
+```bash
+cd output
+cat result.txt
+```
+
+The result will come in this format. Note, this is just an example, not the exact calculations
+
+```
+Accounting metrics calculated for 14/09/2023 in AUD
+
+                  Revenue:  $42,151
+                 Expenses:  $67,570
+      Gross Profit Margin:  0.5%
+        Net Profit Margin:  15.8%
+    Working Capital Ratio:  89%
+```
+
+It also includes header information about the currency and date
 
 ## Testing
 

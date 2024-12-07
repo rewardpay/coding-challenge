@@ -7,7 +7,11 @@ const {
 const {
   calculateWorkingCapitalRatio,
 } = require("./calculations/workingCapitalRatio");
-const { DATA_INPUT_FILE_PATH } = require("./config");
+const {
+  DATA_INPUT_FILE_PATH,
+  DATA_OUTPUT_DIR,
+  DATA_OUTPUT_FILE_NAME,
+} = require("./config");
 const {
   formatCurrency,
   formatPercentage,
@@ -63,6 +67,10 @@ function main() {
         "Working Capital Ratio",
         formatPercentage(workingCapitalRatio)
       )
+    );
+
+    console.log(
+      `All metrics were calculated successfully. Check results in ${DATA_OUTPUT_DIR}/${DATA_OUTPUT_FILE_NAME}`
     );
 
     //NOTE: For testing
