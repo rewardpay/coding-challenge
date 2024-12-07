@@ -1,3 +1,5 @@
+const { FILE_SPACING_PADDING } = require("../config");
+
 /**
  * Formats a number as a currency string.
  * @param {number} value - The number to be formatted.
@@ -23,7 +25,9 @@ function formatPercentage(value) {
 }
 
 function createFileOutputLine(header, value) {
-  return `${" ".repeat(25 - header.length)}${header}:  ${value}`;
+  return `${" ".repeat(
+    FILE_SPACING_PADDING - header.length
+  )}${header}:  ${value}`;
 }
 
 module.exports = { formatCurrency, formatPercentage, createFileOutputLine };

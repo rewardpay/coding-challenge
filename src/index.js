@@ -4,6 +4,7 @@ const {
   calculateGrossProfitMargin,
   calculateNetProfitMargin,
 } = require("./calculations/accountingMetrics");
+const { DATA_INPUT_FILE_PATH } = require("./config");
 const {
   formatCurrency,
   formatPercentage,
@@ -15,16 +16,10 @@ const {
   clearFile,
 } = require("./helpers/fileHandler");
 
-const dataFilePath = "./data/data.json";
-
 function main() {
   try {
     //Read data from the file
-
-    //TODO: see if I need this in the future
-    // currency: 'AUD',
-    // balance_date: '2020-09-30T00:00:00.000Z'
-    const { data, currency, balance_date } = readJsonFile(dataFilePath);
+    const { data, currency, balance_date } = readJsonFile(DATA_INPUT_FILE_PATH);
 
     //Clear previously stored values from the file
     clearFile();

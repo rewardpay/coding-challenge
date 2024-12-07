@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { DATA_OUTPUT_DIR, DATA_OUTPUT_FILE_NAME } = require("../config");
 
 /**
  * Reads and parses a JSON file.
@@ -23,7 +24,11 @@ function readJsonFile(filePath) {
  * @param {string} dirPath - The path to the output directory. Defaults to "./output"
  * @param {string} fileName - The name of the output file. Defaults to "result.txt"
  */
-function appendToFile(text, dirPath = "./output", fileName = "result.txt") {
+function appendToFile(
+  text,
+  dirPath = DATA_OUTPUT_DIR,
+  fileName = DATA_OUTPUT_FILE_NAME
+) {
   try {
     const directoryPath = path.resolve(dirPath);
     const filePath = path.join(directoryPath, fileName);
@@ -45,7 +50,10 @@ function appendToFile(text, dirPath = "./output", fileName = "result.txt") {
  * @param {string} dirPath - The path to the output directory. Defaults to "./output"
  * @param {string} fileName - The name of the output file. Defaults to "result.txt"
  */
-function clearFile(dirPath = "./output", fileName = "result.txt") {
+function clearFile(
+  dirPath = DATA_OUTPUT_DIR,
+  fileName = DATA_OUTPUT_FILE_NAME
+) {
   try {
     const directoryPath = path.resolve(dirPath);
     const filePath = path.join(directoryPath, fileName);
