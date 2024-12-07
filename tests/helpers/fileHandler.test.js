@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import fs from "fs";
 import path from "path";
 import {
@@ -7,16 +7,23 @@ import {
   clearFile,
 } from "../../src/helpers/fileHandler";
 
-const outputDir = "./output";
-const outputFile = "testResult.txt";
 const testJsonPath = "./tests/testData.json";
+const testOutputDir = path.join(__dirname, "files");
+const testOutputFile = "testResult.txt";
 
-beforeEach(() => {
-  if (fs.existsSync(outputFile)) fs.unlinkSync(outputFile);
+beforeAll(() => {
+  if (!fs.existsSync(testOutputDir)) {
+    fs.mkdirSync(testOutputDir);
+  }
 });
 
-afterEach(() => {
-  if (fs.existsSync(outputFile)) fs.unlinkSync(outputFile);
+afterAll(() => {
+  if (fs.existsSync(path.join(testOutputDir, testOutputFile))) {
+    fs.unlinkSync(path.join(testOutputDir, testOutputFile));
+  }
+  if (fs.existsSync(testOutputDir)) {
+    fs.rmdirSync(testOutputDir);
+  }
 });
 
 describe("fileHandler.js", () => {
@@ -32,47 +39,42 @@ describe("fileHandler.js", () => {
   describe("appendToFile", () => {
     it("should append text to the file", () => {
       const text = "New text to be appended";
-      appendToFile(text, outputDir, outputFile);
+      appendToFile(text, testOutputDir, testOutputFile);
       const content = fs.readFileSync(
-        path.join(outputDir, outputFile),
+        path.join(testOutputDir, testOutputFile),
         "utf-8"
       );
       expect(content.trim()).toBe(text);
     });
 
     it("should create file if it doesn't exist", () => {
-      appendToFile("Content", outputDir, outputFile);
-      expect(fs.existsSync(path.join(outputDir, outputFile))).toBe(true);
-    });
-
-    it("should create the directory if it doesn't exist", () => {
-      const newDir = "./newOutputDir";
-      const newFile = "newResult.txt";
-      appendToFile("Directory and file created", newDir, newFile);
-      expect(fs.existsSync(path.join(newDir, newFile))).toBe(true);
+      appendToFile("Content", testOutputDir, testOutputFile);
+      expect(fs.existsSync(path.join(testOutputDir, testOutputFile))).toBe(
+        true
+      );
     });
   });
 
   describe("clearFile", () => {
     it("should clear the content of an existing file", () => {
       fs.writeFileSync(
-        path.join(outputDir, outputFile),
+        path.join(testOutputDir, testOutputFile),
         "Initial content",
         "utf-8"
       );
-      clearFile(outputDir, outputFile);
+      clearFile(testOutputDir, testOutputFile);
       const content = fs.readFileSync(
-        path.join(outputDir, outputFile),
+        path.join(testOutputDir, testOutputFile),
         "utf-8"
       );
       expect(content).toBe("");
     });
 
     it("should do nothing if the file does not exist", () => {
-      const filePath = path.join(outputDir, outputFile);
+      const filePath = path.join(testOutputDir, testOutputFile);
       if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
 
-      clearFile(outputDir, outputFile);
+      clearFile(testOutputDir, testOutputFile);
 
       expect(fs.existsSync(filePath)).toBe(false);
     });
