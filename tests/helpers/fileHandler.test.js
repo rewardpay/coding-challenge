@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import fs from "fs";
 import path from "path";
 import {
-  readJsonFileSync,
+  readJsonFile,
   appendToFile,
   clearFile,
 } from "../../src/helpers/fileHandler";
@@ -20,11 +20,11 @@ afterEach(() => {
 });
 
 describe("fileHandler.js", () => {
-  describe("readJsonFileSync", () => {
+  describe("readJsonFile", () => {
     it("should read and parse a JSON file correctly", () => {
       const testData = { key: "value" };
       fs.writeFileSync(testJsonPath, JSON.stringify(testData), "utf-8");
-      const data = readJsonFileSync(testJsonPath);
+      const data = readJsonFile(testJsonPath);
       expect(data).toEqual(testData);
     });
   });

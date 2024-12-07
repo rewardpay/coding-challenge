@@ -6,7 +6,7 @@ const path = require("path");
  * @param {string} filePath - The relative path to the JSON file.
  * @returns {Object} - The parsed data object.
  */
-function readJsonFileSync(filePath) {
+function readJsonFile(filePath) {
   try {
     const absolutePath = path.resolve(filePath);
     const data = fs.readFileSync(absolutePath, "utf-8");
@@ -59,4 +59,4 @@ function clearFile(dirPath = "./output", fileName = "result.txt") {
   }
 }
 
-module.exports = { readJsonFileSync, appendToFile, clearFile };
+module.exports = { readJsonFile, appendToFile, clearFile };

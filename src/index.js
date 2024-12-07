@@ -1,5 +1,5 @@
 const {
-  readJsonFileSync,
+  readJsonFile,
   appendToFile,
   clearFile,
 } = require("./helpers/fileHandler");
@@ -9,7 +9,7 @@ const dataFilePath = "./data/data.json";
 function main() {
   try {
     //Read data from the file
-    const data = readJsonFileSync(dataFilePath);
+    const data = readJsonFile(dataFilePath);
 
     // console.log(data);
     // clearFile();
