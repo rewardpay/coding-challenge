@@ -4,6 +4,9 @@ const {
   calculateGrossProfitMargin,
   calculateNetProfitMargin,
 } = require("./calculations/accountingMetrics");
+const {
+  calculateWorkingCapitalRatio,
+} = require("./calculations/workingCapitalRatio");
 const { DATA_INPUT_FILE_PATH } = require("./config");
 const {
   formatCurrency,
@@ -53,10 +56,20 @@ function main() {
       createFileOutputLine("Net Profit Margin", formatPercentage(netProfMarg))
     );
 
+    //Calculate and save Working Capital Ratio value
+    const workingCapitalRatio = calculateWorkingCapitalRatio(data);
+    appendToFile(
+      createFileOutputLine(
+        "Working Capital Ratio",
+        formatPercentage(workingCapitalRatio)
+      )
+    );
+
     console.log(formatCurrency(revenue));
     console.log(formatCurrency(expenses));
     console.log(formatPercentage(grossProfMarg));
     console.log(formatPercentage(netProfMarg));
+    console.log(formatPercentage(workingCapitalRatio));
   } catch (error) {
     console.error("Failed to load data:", error.message);
   }
