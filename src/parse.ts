@@ -2,11 +2,11 @@ import fs from 'fs';
 
 //Read the data file 
 export function readData(filePath:string) {
-    const file = fs.readFileSync('./data.json', 'utf-8');
+    const file = fs.readFileSync(filePath, 'utf-8');
 
     try {
         const parsedData = JSON.parse(file);
-        return  parsedData.data || []; 
+        return  parsedData.data; 
     } catch (error) {
         console.error("Error parsing JSON:", error);
         return [];
@@ -14,7 +14,7 @@ export function readData(filePath:string) {
 }
 
 
-export function formatting(input:number){
+export function formatting(input:number):String{
     const formatter = new Intl.NumberFormat('en-US');
 
     const formattedNumber = formatter.format(input);

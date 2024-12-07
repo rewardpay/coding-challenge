@@ -26,6 +26,11 @@ You are tasked with developing an application that performs the following tasks 
   5. Working Capital Ratio
 - Commit your changes, and upload all your work to a feature branch of your choice.
 
+## Program running 
+- First run `npm install` to install the necessary libraries of the application
+- Use `npm run dev` to start the application the final result will show through the terminal 
+- Use `npm run test` to start the unit test process.
+
 ## Instructions
 
 - Begin by _forking_ the current repository to your own `github.com` account
