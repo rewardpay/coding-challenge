@@ -22,4 +22,8 @@ function formatPercentage(value) {
   return `${(+value).toFixed(1)}%`;
 }
 
-module.exports = { formatCurrency, formatPercentage };
+function createFileOutputLine(header, value) {
+  return `${" ".repeat(25 - header.length)}${header}:  ${value}`;
+}
+
+module.exports = { formatCurrency, formatPercentage, createFileOutputLine };

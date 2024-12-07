@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 const {
   formatCurrency,
   formatPercentage,
+  createFileOutputLine,
 } = require("../../src/helpers/dataFormatting");
 
 describe("formatCurrency", () => {
@@ -41,5 +42,22 @@ describe("formatPercentage", () => {
     expect(() => formatPercentage("not a number")).to.throw(
       "Value must be a number"
     );
+  });
+});
+
+describe("createFileOutputLine", () => {
+  it("should format output with correct padding for a short header", () => {
+    const result = createFileOutputLine("Revenue", "$1000");
+    expect(result).to.equal("                  Revenue:  $1000");
+  });
+
+  it("should handle headers exactly 25 characters long", () => {
+    const result = createFileOutputLine("1234567890123456789012345", "$500");
+    expect(result).to.equal("1234567890123456789012345:  $500");
+  });
+
+  it("should handle empty headers and values gracefully", () => {
+    const result = createFileOutputLine("", "");
+    expect(result).to.equal("                         :  ");
   });
 });

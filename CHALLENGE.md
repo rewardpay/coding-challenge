@@ -1,4 +1,4 @@
-# RewardPay Coding Challenge - Kateryna Bilokur
+# RewardPay Coding Challenge
 
 ## Overview
 
