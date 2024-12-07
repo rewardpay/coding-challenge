@@ -11,8 +11,8 @@ export function parseData(filePath: string): any[] {
     }
 }
 
-export function formatCurrency(value: number): string {
-    return `$${value.toLocaleString('en-US', { maximumFractionDigits: 0 })}`;
+export function formatCurrency(currency: number): string {
+    return `$${currency.toLocaleString('en-US', { maximumFractionDigits: 0 })}`;
 }
 
 export function formatPercentage(value: number): string {
