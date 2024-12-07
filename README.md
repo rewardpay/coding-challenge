@@ -18,11 +18,11 @@ To run this project locally, follow these steps:
 
 1. Clone the repository:
 
-   git clone <repository-url>
+   git clone https://github.com/Milan-sys-stack/coding-challenge
   
 2. Navigate to the project directory:
 
-cd <project-folder>
+cd coding-challenge
 
 3. Install dependencies using npm:
 
