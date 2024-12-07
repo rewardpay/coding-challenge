@@ -1,5 +1,3 @@
-Here is the `README.md` file for your project:
-
 ```markdown
 # RewardPay Coding Challenge
 
