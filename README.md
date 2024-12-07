@@ -1,96 +1,152 @@
+Here is the `README.md` file for your project:
+
+````markdown
 # RewardPay Coding Challenge
 
 ## Overview
 
-This repo contains the instructions and the data you need to complete the _RewardPay coding challenge_. This challenge is not intended to be complex, but it is an opportunity for you to showcase your understanding and applying of good development practices.
+This project implements the RewardPay coding challenge, calculating and displaying essential accounting metrics based on data from a JSON file. It follows a modular approach, includes unit tests, and ensures maintainable and scalable code.
 
-You are encouraged to treat this as a real-life project. This typically means:
+## Features
 
-- Use version control effectively
-- Include some basic documentation
-- Include some unit tests
-- Adhere to a naming convention
-
-Please use JavaScript of TypeScript to complete this challenge.
-
-## The Challenge
-
-You are tasked with developing an application that performs the following tasks in sequence:
-
-- Read and parse an external data file `data.json` (located in this repo)
-- Using this data, calculate and print the values of 5 common accounting metrics:
+- Reads data from `data.json` for calculations.
+- Computes the following accounting metrics:
   1. Revenue
   2. Expenses
   3. Gross Profit Margin
   4. Net Profit Margin
   5. Working Capital Ratio
-- Commit your changes, and upload all your work to a feature branch of your choice.
+- Uses Jest for unit testing and Babel for transpiling ES6+ code.
+- Modular structure for ease of development and testing.
 
-## Instructions
+## Requirements
 
-- Begin by _forking_ the current repository to your own `github.com` account
-- Clone the repo locally
-- Write your code, _commit often_
-- Once you are satisfied with the output, push your changes to your `github.com` account
-- Share the link
+- Node.js (>=14.x)
+- npm (>=6.x)
 
-## Calculations
+## Installation
 
-Use the formulas below to calculate your values:
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd <repository-folder>
+   ```
+````
 
-### Revenue
+2. Install the dependencies:
+   ```bash
+   npm install
+   ```
 
-This should be calculated by adding up all the values under `total_value` where the `account_category` field is set to `revenue`
+## Usage
 
-### Expenses
+### Run the Application
 
-This should be calculated by adding up all the values under `total_value` where the `account_category` field is set to `expense`
+To execute the program:
 
-### Gross Profit Margin
+```bash
+npm start
+```
 
-This is calculated in two steps: first by adding all the `total_value` fields where the `account_type` is set to `sales` and the `value_type` is set to `debit`; then dividing that by the `revenue` value calculated earlier to generate a percentage value.
+### Run in Development Mode
 
-### Net Profit Margin
+For live reload during development:
 
-This metric is calculated by subtracting the `expenses` value from the `revenue` value and dividing the remainder by `revenue` to calculate a percentage.
+```bash
+npm run dev
+```
 
-### Working Capital Ratio
+### Run Tests
 
-This is calculated dividing the `assets` by the `liabilities` creating a percentage value where `assets` are calculated by:
+To execute the test suite:
 
-- adding the `total_value` from all records where the `account_category` is set to `assets`, the `value_type` is set to `debit`, and the `account_type` is one of `current`, `bank`, or `current_accounts_receivable`
-- subtracting the `total_value` from all records where the `account_category` is set to `assets`, the `value_type` is set to `credit`, and the `account_type` is one of `current`, `bank`, or `current_accounts_receivable`
+```bash
+npm test
+```
 
-and liabilities are calculated by:
+## Project Structure
 
-- adding the `total_value` from all records where the `account_category` is set to `liability`, the `value_type` is set to `credit`, and the `account_type` is one of `current` or `current_accounts_payable`
-- subtracting the `total_value` from all records where the `account_category` is set to `liability`, the `value_type` is set to `debit`, and the `account_type` is one `current` or `current_accounts_payable`
+```
+src/
+│
+├── data/                          # Contains data files
+│   └── data.json                  # Input JSON file for calculations
+│
+├── metrics/                       # Contains metric calculation logic
+│   ├── Expenses.js                # Logic for expenses calculation
+│   ├── GrossProfitMargin.js       # Logic for gross profit margin calculation
+│   ├── NetProfitMargin.js         # Logic for net profit margin calculation
+│   ├── Revenue.js                 # Logic for revenue calculation
+│   └── WorkingCapitalRatio.js     # Logic for working capital ratio calculation
+│
+├── util/                          # Contains utility functions
+│   ├── Formater.js                # For formatting currency and percentages
+│   └── ReadDataFile.js            # For reading and parsing the JSON file
+│
+└── index.js                       # Main entry point of the application
+```
+
+```
+tests/
+│
+└── src/
+    ├── metrics/                   # Unit tests for metrics
+    │   ├── Expenses.test.js
+    │   ├── GrossProfitMargin.test.js
+    │   ├── NetProfitMargin.test.js
+    │   ├── Revenue.test.js
+    │   └── WorkingCapitalRatio.test.js
+    └── index.test.js              # Test for application entry point
+```
+
+## Accounting Metrics
+
+1. **Revenue**:  
+   Sum of `total_value` for all entries with `account_category` = `revenue`.
+
+2. **Expenses**:  
+   Sum of `total_value` for all entries with `account_category` = `expense`.
+
+3. **Gross Profit Margin**:  
+   Formula: `(Sales Debit / Revenue) * 100`
+
+4. **Net Profit Margin**:  
+   Formula: `((Revenue - Expenses) / Revenue) * 100`
+
+5. **Working Capital Ratio**:  
+   Formula: `(Assets / Liabilities) * 100`
 
 ## Formatting
 
-All currency figures must be formatted as follows:
+- **Currency**: Prefixed with `$`, no decimals, and commas for thousands.
+- **Percentage**: Prefixed with `%` and formatted to one decimal place.
 
-- The value is prefixed with a `$` sign
-- A comma is used to separate every 3 digits in the thousands, millions, billions, and trillions
-- Cents are removed
-
-All percentage values must be formatted to one decimal digit and be prefixed with a `%` sign. Don't forget to multiply by 100 each time you're tasked with calculating a percentage value.
-
-## Example
-
-Below is what a typical output should look like. Please note this is _not_ the output of the challenge but a mere example.
+### Example Output
 
 ```
-$ ./myChallenge
 Revenue: $519,169
 Expenses: $411,664
-Gross Profit Margin: 22%
-Net Profit Margin: 21%
-Working Capital Ratio: 95%
+Gross Profit Margin: 22.1%
+Net Profit Margin: 21.0%
+Working Capital Ratio: 95.0%
 ```
 
-# Dependencies
+## Development Tools
 
-If your program requires a special way to compile or a specific version of a toolset, please be sure to include that in your running instructions.
+- **Node.js**: JavaScript runtime.
+- **Jest**: Test framework.
+- **Babel**: For using modern JavaScript features.
 
-**Thank you and good luck!**
+## Author
+
+**Srijan Dahal**  
+[LinkedIn](https://www.linkedin.com/in/srijan21/) | [Website](https://www.dahalsrijan.com.np/)
+
+## License
+
+This project is licensed under the ISC License.
+
+```
+
+You can copy this file and save it as `README.md` in your project directory. Let me know if you'd like further adjustments!
+```
