@@ -1,5 +1,7 @@
+import { WorkingCapitalRatioDataType } from "../../Types/WorkingCapitalRatioData";
+
 // Working Capital Ratio Calculation Function
-export function calculateWorkingCapitalRatio(data: any[]): number {
+export function calculateWorkingCapitalRatio(data: WorkingCapitalRatioDataType[]): number {
     const assets = data
         .filter(item =>
             item.account_category === 'assets' &&

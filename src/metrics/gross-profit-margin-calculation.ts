@@ -1,5 +1,7 @@
+import { GrossProfitMarginDataType } from "../../Types/GrossProfitMarginData";
+
 // Gross Profit Margin Calculation Function
-export function calculateGrossProfitMargin(data: any[], revenue: number): number {
+export function calculateGrossProfitMargin(data: GrossProfitMarginDataType[], revenue: number): number {
     // Step 1: Added the total_value for all 'sales' with 'debit' value_type
     const totalSales = data
         .filter(item => item.account_type === 'sales' && item.value_type === 'debit') // it filters sales with debit
