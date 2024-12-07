@@ -3,119 +3,83 @@ import { GrossProfitMargin } from "../../src/metrics/GrossProfitMargin.js";
 import { NetProfitMargin } from "../../src/metrics/NetProfitMargin.js";
 import { Revenue } from "../../src/metrics/Revenue.js";
 import { WorkingCapitalRatio } from "../../src/metrics/WorkingCapitalRatio.js";
-import data from "../../src/data/data.json";
 
-jest.mock("../../src/util/ReadDataFile.js");
+// Mock the utility functions for formatting currency and percentages
+jest.mock("../../src/util/ReadDataFile.js"); // Mock ReadDataFile module
 
+// Mock the formatting functions to return predefined formatted results
 jest.mock("../../src/util/Formater.js", () => ({
-  formatCurrency: jest.fn((value) => `$${Math.round(value).toLocaleString()}`),
-  formatPercentage: jest.fn((value) => `${value.toFixed(1)}%`),
+  formatCurrency: jest.fn((value) => `$${Math.round(value).toLocaleString()}`), // Mock formatCurrency function
+  formatPercentage: jest.fn((value) => `${value.toFixed(1)}%`), // Mock formatPercentage function
 }));
 
 describe("Main Workflow", () => {
   beforeEach(() => {
-    jest.clearAllMocks(); // Clear mocks before each test
+    jest.clearAllMocks(); // Clear mocks before each test to ensure a clean slate
   });
-  const finalData = data.data;
+
+  // Hardcoded expected values for comparison
+  const hardcodedExpectedRevenue = 32431; // Hardcoded expected revenue
+  const hardcodedExpectedExpenses = 33328.64; // Hardcoded expected expenses
+  const hardcodedSalesTotal = 20000; // Hardcoded total sales value
+  const hardcodedExpectedGrossProfitMargin =
+    (hardcodedSalesTotal / hardcodedExpectedRevenue) * 100; // Hardcoded Gross Profit Margin calculation
+  const hardcodedExpectedNetProfitMargin =
+    ((hardcodedExpectedRevenue - hardcodedExpectedExpenses) /
+      hardcodedExpectedRevenue) *
+    100; // Hardcoded Net Profit Margin calculation
+  const hardcodedExpectedWorkingCapitalRatio = 40.3; // Hardcoded Working Capital Ratio calculation
+
   test("Calculates all metrics correctly using actual data", (done) => {
-    // Dynamically calculate expected values
-    const expectedRevenue = finalData
-      .filter((item) => item.account_category === "revenue")
-      .map((item) => item.total_value)
-      .reduce((sum, value) => sum + value, 0);
+    // Directly test functions and assert results with hardcoded values
 
-    const expectedExpenses = finalData
-      .filter((item) => item.account_category === "expense")
-      .map((item) => item.total_value)
-      .reduce((sum, value) => sum + value, 0);
-
-    const salesTotal = finalData
-      .filter(
-        (item) => item.account_type === "sales" && item.value_type === "debit"
-      )
-      .map((item) => item.total_value)
-      .reduce((sum, value) => sum + value, 0);
-
-    const expectedGrossProfitMargin = (salesTotal / expectedRevenue) * 100;
-
-    const expectedNetProfitMargin =
-      ((expectedRevenue - expectedExpenses) / expectedRevenue) * 100;
-
-    const debitAssets = finalData
-      .filter(
-        (item) =>
-          item.account_category === "assets" &&
-          item.value_type === "debit" &&
-          (item.account_type === "current" ||
-            item.account_type === "bank" ||
-            item.account_type === "current_accounts_receivable")
-      )
-      .map((item) => item.total_value)
-      .reduce((sum, value) => sum + value, 0);
-
-    const creditAssets = finalData
-      .filter(
-        (item) =>
-          item.account_category === "assets" &&
-          item.value_type === "credit" &&
-          (item.account_type === "current" ||
-            item.account_type === "bank" ||
-            item.account_type === "current_accounts_receivable")
-      )
-      .map((item) => item.total_value)
-      .reduce((sum, value) => sum + value, 0);
-
-    const assets = debitAssets - creditAssets;
-
-    const debitLiabilities = finalData
-      .filter(
-        (item) =>
-          item.account_category === "liability" &&
-          item.value_type === "debit" &&
-          (item.account_type === "current" ||
-            item.account_type === "current_accounts_payable")
-      )
-      .map((item) => item.total_value)
-      .reduce((sum, value) => sum + value, 0);
-
-    const creditLiabilities = finalData
-      .filter(
-        (item) =>
-          item.account_category === "liability" &&
-          item.value_type === "credit" &&
-          (item.account_type === "current" ||
-            item.account_type === "current_accounts_payable")
-      )
-      .map((item) => item.total_value)
-      .reduce((sum, value) => sum + value, 0);
-
-    const liabilities = creditLiabilities - debitLiabilities;
-    const expectedWorkingCapitalRatio = (assets / liabilities) * 100;
-
-    // Call functions and assert results
+    // Test the Revenue function
     Revenue((err, revenue) => {
-      expect(err).toBeNull();
-      expect(formatCurrency).toHaveBeenCalledWith(expectedRevenue);
+      expect(err).toBeNull(); // No error should occur
+      expect(formatCurrency).toHaveBeenCalledWith(hardcodedExpectedRevenue); // Compare with hardcoded value
+      expect(revenue).toBe(formatCurrency(hardcodedExpectedRevenue)); // Compare with hardcoded value
     });
+
+    // Test the Expenses function
     Expenses((err, expenses) => {
-      expect(err).toBeNull();
-      expect(formatCurrency).toHaveBeenCalledWith(expectedExpenses);
+      expect(err).toBeNull(); // No error should occur
+      expect(formatCurrency).toHaveBeenCalledWith(hardcodedExpectedExpenses); // Compare with hardcoded value
+      expect(expenses).toBe(formatCurrency(hardcodedExpectedExpenses)); // Compare with hardcoded value
     });
+
+    // Test the GrossProfitMargin function
     GrossProfitMargin((err, grossProfitMargin) => {
-      expect(err).toBeNull();
-      expect(formatPercentage).toHaveBeenCalledWith(expectedGrossProfitMargin);
-    });
-    NetProfitMargin((err, netProfitMargin) => {
-      expect(err).toBeNull();
-      expect(formatPercentage).toHaveBeenCalledWith(expectedNetProfitMargin);
-    });
-    WorkingCapitalRatio((err, workingCapitalRatio) => {
-      expect(err).toBeNull();
+      expect(err).toBeNull(); // No error should occur
       expect(formatPercentage).toHaveBeenCalledWith(
-        expectedWorkingCapitalRatio
-      );
-      // Indicate test completion
+        hardcodedExpectedGrossProfitMargin
+      ); // Compare with hardcoded value
+      expect(grossProfitMargin).toBe(
+        formatPercentage(hardcodedExpectedGrossProfitMargin)
+      ); // Compare with hardcoded value
     });
-    done();
+
+    // Test the NetProfitMargin function
+    NetProfitMargin((err, netProfitMargin) => {
+      expect(err).toBeNull(); // No error should occur
+      expect(formatPercentage).toHaveBeenCalledWith(
+        hardcodedExpectedNetProfitMargin
+      ); // Compare with hardcoded value
+      expect(netProfitMargin).toBe(
+        formatPercentage(hardcodedExpectedNetProfitMargin)
+      ); // Compare with hardcoded value
+    });
+
+    // Test the WorkingCapitalRatio function
+    WorkingCapitalRatio((err, workingCapitalRatio) => {
+      expect(err).toBeNull(); // No error should occur
+      expect(formatPercentage).toHaveBeenCalledWith(
+        hardcodedExpectedWorkingCapitalRatio
+      ); // Compare with hardcoded value
+      expect(workingCapitalRatio).toBe(
+        formatPercentage(hardcodedExpectedWorkingCapitalRatio)
+      ); // Compare with hardcoded value
+    });
+
+    done(); // Indicate test completion
   });
 });
