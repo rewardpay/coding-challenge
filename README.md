@@ -147,5 +147,5 @@ This project is licensed under the ISC License.
 
 ```
 
-You can copy this file and save it as `README.md` in your project directory. Let me know if you'd like further adjustments!
+
 ```
