@@ -1,9 +1,7 @@
 import { 
     Revenue, 
     Expenses, 
-    GrossProfitMargin, 
-    NetProfitMargin, 
-    WorkingCapitalRatio } 
+    NetProfitMargin } 
     from './src/Calculations';
   
   describe('Calculations', () => {

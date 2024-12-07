@@ -25,6 +25,7 @@ A TypeScript-base application for calculation key accounting metrics from finani
 2. Install Dependencies:
    
    ```bash
+   cd rewardpay-coding-challenge
    npm i
    ```
 
