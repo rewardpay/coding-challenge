@@ -1,40 +1,54 @@
-# RewardPay Coding Challenge
+# RewardPay Account Calculatation challange 
 
-## Overview
+## Project Overview
+A TypeScript-base application for calculation key accounting metrics from finanical data.
 
-This repo contains the instructions and the data you need to complete the _RewardPay coding challenge_.  This challenge is not intended to be complex, but it is an opportunity for you to showcase your understanding and applying of good development practices.
+## Features 
+- Revenue calculation
+- Expenses calculation
+- Gross Profit Margin
+- Net Profit Margin
+- Working Capital Ratio
 
-You are encouraged to treat this as a real-life project.  This typically means:
 
-- Use version control effectively
-- Include some basic documentation
-- Include some unit tests
-- Adhere to a naming convention
+## Prerequisits 
+- Nodejs(16+)
+- NPM
 
-Please use JavaScript of TypeScript to complete this challenge.
+## Setup Instructions
 
-## The Challenge
+1. Clone the repository:
 
-You are tasked with developing an application that performs the following tasks in sequence:
+   ```bash
+   git clone https://github.com/abishkar123/rewardpay-coding-challeng.git
+   ```
+2. Install Dependencies:
+   
+   ```bash
+   cd rewardpay-coding-challenge
+   npm i
+   ```
 
-- Read and parse an external data file `data.json` (located in this repo)
-- Using this data, calculate and print the values of 5 common accounting metrics:
-  1. Revenue
-  2. Expenses
-  3. Gross Profit Margin
-  4. Net Profit Margin
-  5. Working Capital Ratio
-- Commit your changes, and upload all your work to a feature branch of your choice.
+3. Running the Application 
+   ```bash
+   npm start 
+   ```
 
-## Instructions
+4. Run the test
+   ```bash
+   npm test
+   ```
 
-- Begin by _forking_ the current repository to your own `github.com` account
-- Clone the repo locally
-- Write your code, _commit often_
-- Once you are satisfied with the output, push your changes to your `github.com` account
-- Share the link
+## Project structure
 
-## Calculations
+- src/: Source code 
+  - calcuations: calcuation login
+  - index: invoke function 
+- test: unit testing 
+
+
+
+## Calculations instructions
 
 Use the formulas below to calculate your values:
 
@@ -75,7 +89,7 @@ All currency figures must be formatted as follows:
 
 All percentage values must be formatted to one decimal digit and be prefixed with a `%` sign.  Don't forget to multiply by 100 each time you're tasked with calculating a percentage value.
 
-## Example
+## Example outcome
 
 Below is what a typical output should look like.  Please note this is *not* the output of the challenge but a mere example.
 
@@ -88,8 +102,4 @@ Net Profit Margin: 21%
 Working Capital Ratio: 95%
 ```
 
-# Dependencies
 
-If your program requires a special way to compile or a specific version of a toolset, please be sure to include that in your running instructions.
-
-__Thank you and good luck!__
