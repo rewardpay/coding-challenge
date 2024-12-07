@@ -22,11 +22,11 @@ To run this project locally, follow these steps:
   
 2. Navigate to the project directory:
 
-cd coding-challenge
+   cd coding-challenge
 
 3. Install dependencies using npm:
 
-npm install
+   npm install
 
 ## Usage
 Once you've set up the project, you can run it using ts-node:
@@ -35,18 +35,18 @@ npx ts-node src/index.ts
 
 ## This will calculate and output the following metrics based on the provided data:
 
-Revenue
-Expenses
-Gross Profit Margin
-Net Profit Margin
-Working Capital Ratio
+- **Revenue**
+- **Expenses**
+- **Gross Profit Margin**
+- **Net Profit Margin**
+- **Working Capital Ratio**
 
-Example Output 
+## Example Output 
 
-Revenue: $32,431
-Expenses: $36,530
-Gross Profit Margin: 0.0%
-Net Profit Margin: -12.6%
-Working Capital Ratio: 118.8%
+- **Revenue**: $32,431
+- **Expenses**: $36,530
+- **Gross Profit Margin**: 0.0%
+- **Net Profit Margin**: -12.6%
+- **Working Capital Ratio**: 118.8%
 
 
