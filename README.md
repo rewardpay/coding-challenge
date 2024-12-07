@@ -28,8 +28,8 @@ This project implements the RewardPay coding challenge, calculating and displayi
 
 1. Clone the repository:
    ```bash
-   git clone <[Repo-link](https://github.com/Srijan1231/coding-challenge.git)>
-   cd <coding-challenge>
+   git clone [Repo-link](https://github.com/Srijan1231/coding-challenge.git)
+   cd coding-challenge
    ```
 ````
 
