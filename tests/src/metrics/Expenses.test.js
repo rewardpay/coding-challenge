@@ -1,6 +1,7 @@
 import { Expenses } from "../../../src/metrics/Expenses.js";
 import { ReadDataFile } from "../../../src/util/ReadDataFile.js";
 import { formatCurrency } from "../../../src/util/Formater.js";
+import data from "../../../src/data/data.json";
 
 // Mock the dependencies
 jest.mock("../../../src/util/ReadDataFile.js");
@@ -13,21 +14,20 @@ describe("Expenses Function", () => {
 
   test("Calculates total expenses correctly", (done) => {
     // Arrange
-    const mockData = [
-      { account_category: "expense", total_value: 100 },
-      { account_category: "expense", total_value: 2000 },
-      { account_category: "revenue", total_value: 300 },
-    ];
+    const finalData = data.data;
     const formattedResult = "$3,000";
 
     // Mock implementation of ReadDataFile
     ReadDataFile.mockImplementation((filePath, callback) => {
-      callback(null, mockData); // Simulate successful file read
+      callback(null, finalData); // Simulate successful file read
     });
 
     // Mock implementation of formatCurrency
     formatCurrency.mockImplementation((value) => formattedResult); // Simulate formatting
-
+    const expenses = finalData
+      .filter((item) => item.account_category === "expense")
+      .map((item) => item.total_value)
+      .reduce((sum, value) => sum + value, 0);
     // Act
     Expenses((err, result) => {
       // Assert
@@ -36,7 +36,7 @@ describe("Expenses Function", () => {
         "src/data/data.json",
         expect.any(Function)
       );
-      expect(formatCurrency).toHaveBeenCalledWith(2100); // Total of 100 + 2000
+      expect(formatCurrency).toHaveBeenCalledWith(expenses); // Total of 100 + 2000
       expect(result).toBe(formattedResult); // Check formatted result
       done(); // Indicate that the test is complete
     });
