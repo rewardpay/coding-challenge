@@ -5,6 +5,10 @@ const {
   calculateNetProfitMargin,
 } = require("./calculations/accountingMetrics");
 const {
+  formatCurrency,
+  formatPercentage,
+} = require("./helpers/dataFormatting");
+const {
   readJsonFile,
   appendToFile,
   clearFile,
@@ -26,10 +30,12 @@ function main() {
     const grossProfMarg = calculateGrossProfitMargin(data, revenue);
     const netProfMarg = calculateNetProfitMargin(data, revenue, expenses);
 
-    console.log(revenue);
-    console.log(expenses);
-    console.log(grossProfMarg);
-    console.log(netProfMarg);
+    console.log(formatCurrency(revenue));
+    console.log(formatCurrency(expenses));
+    console.log(formatPercentage(grossProfMarg));
+    console.log(formatPercentage(netProfMarg));
+
+    console.log(+"tete");
 
     //
 

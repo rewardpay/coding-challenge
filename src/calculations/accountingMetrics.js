@@ -58,9 +58,12 @@ function calculateNetProfitMargin(data, revenue = null, expenses = null) {
   return rev === 0 ? 0 : ((rev - exp) / rev) * 100;
 }
 
+function calculateWorkingCapitalRatio(data) {}
+
 module.exports = {
   calculateRevenue,
   calculateExpenses,
   calculateGrossProfitMargin,
   calculateNetProfitMargin,
+  calculateWorkingCapitalRatio,
 };
