@@ -4,6 +4,8 @@
   "description": "This repo contains the instructions and the data you need to complete the _RewardPay coding challenge_.  This challenge is not intended to be complex, but it is an opportunity for you to showcase your understanding and applying of good development practices.",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon src/index.ts",
+    "build":"tsc",
     "test": "jest"
   },
   "keywords": [],
@@ -17,6 +19,8 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
-    "babel-preset-env": "^1.7.0"
+    "@types/node": "^22.10.1",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^3.1.7"
   }
 }

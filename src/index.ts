@@ -1,9 +1,8 @@
 import { calculations } from "./calculations";
-import { readData } from "./dataLoader";
+import dataSource from "./data/data.json" 
 import { formatCurrency, formatPercentage } from "./resultFormat";
 
-const data=readData("data/data.json")
-const result=calculations(data.data)
+const result=calculations(dataSource.data)
 
 console.log(`Revenue: ${formatCurrency(result.revenue)}`);
 console.log(`Expenses: ${formatCurrency(result.expenses)}`);
