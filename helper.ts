@@ -7,7 +7,7 @@ export function readData(filePath: string): any {
         return JSON.parse(data);
     } catch (error) {
         console.error("Error reading JSON file:", error);
-        process.exit(1);
+        throw error
     }
 }
 

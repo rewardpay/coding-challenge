@@ -1,7 +1,7 @@
 var helper = require('./helper')
 const dataFilePath = './data.json'
 
-function calculateRevenue(accounts: any): number {
+export function calculateRevenue(accounts: any): number {
     const revenue = accounts
     .filter((acc: any) => acc.account_category === 'revenue')
     .reduce((sum: number, acc: any) => sum + acc.total_value, 0)
@@ -9,7 +9,7 @@ function calculateRevenue(accounts: any): number {
     return revenue
 }
 
-function calculateExpenses(accounts: any): number {
+export function calculateExpenses(accounts: any): number {
     const expenses = accounts
         .filter((acc: any) => acc.account_category === 'expense')
         .reduce((sum: number, acc: any) => sum + acc.total_value, 0)
@@ -17,7 +17,7 @@ function calculateExpenses(accounts: any): number {
     return expenses
 }
 
-function calculateGrossProfitMargin(accounts: any, revenue: number): number {
+export function calculateGrossProfitMargin(accounts: any, revenue: number): number {
     const salesDebit = accounts
     .filter((acc: any) => acc.account_type === 'sales' && acc.value_type === 'debit')
     .reduce((sum: number, acc: any) => sum + acc.total_value, 0)
@@ -30,7 +30,7 @@ function calculateGrossProfitMargin(accounts: any, revenue: number): number {
     return grossProfitMargin
 }
 
-function calculateNetProfitMargin(expenses: number, revenue: number): number {
+export function calculateNetProfitMargin(expenses: number, revenue: number): number {
     if (revenue !== 0) {
         return (revenue - expenses) / revenue
     }
@@ -38,7 +38,7 @@ function calculateNetProfitMargin(expenses: number, revenue: number): number {
     return 0
 }
 
-function calculateWorkingCapitalRatio(accounts: any): number {
+export function calculateWorkingCapitalRatio(accounts: any): number {
     const assets = accounts
     .filter((acc: any) =>
         acc.account_category === 'assets' &&
