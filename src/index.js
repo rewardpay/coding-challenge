@@ -65,11 +65,12 @@ function main() {
       )
     );
 
-    console.log(formatCurrency(revenue));
-    console.log(formatCurrency(expenses));
-    console.log(formatPercentage(grossProfMarg));
-    console.log(formatPercentage(netProfMarg));
-    console.log(formatPercentage(workingCapitalRatio));
+    //NOTE: For testing
+    // console.log(formatCurrency(revenue));
+    // console.log(formatCurrency(expenses));
+    // console.log(formatPercentage(grossProfMarg));
+    // console.log(formatPercentage(netProfMarg));
+    // console.log(formatPercentage(workingCapitalRatio));
   } catch (error) {
     console.error("Failed to load data:", error.message);
   }

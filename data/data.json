@@ -18,17 +18,17 @@
       "total_value": 32431.0
     },
     {
-      "account_category": "revenue",
+      "account_category": "revenue1",
       "account_code": "200",
       "account_currency": "AUD",
       "account_identifier": "e2bacdc6-2006-43c2-a5da-3c0e5f43b452",
       "account_status": "ACTIVE",
-      "value_type": "debit",
+      "value_type": "debitt",
       "account_name": "Sales",
       "account_type": "sales",
       "account_type_bank": "",
       "system_account": "",
-      "total_value": "12431.0"
+      "total_value": 32431.0
     },
     {
       "account_code": "400",

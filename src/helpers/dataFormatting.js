@@ -21,6 +21,8 @@ function formatPercentage(value) {
   if (isNaN(+value)) {
     throw new TypeError("Value must be a number");
   }
+
+  if (value === 0) return "0%";
   return `${(+value).toFixed(1)}%`;
 }
 

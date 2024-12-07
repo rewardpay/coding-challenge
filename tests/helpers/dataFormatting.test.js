@@ -35,7 +35,7 @@ describe("formatPercentage", () => {
   });
 
   it("should handle 0 correctly", () => {
-    expect(formatPercentage(0)).to.equal("0.0%");
+    expect(formatPercentage(0)).to.equal("0%");
   });
 
   it("should throw an error if the input is not a number", () => {
