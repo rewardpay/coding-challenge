@@ -1,4 +1,4 @@
-import { AccountCategory, ValueType } from "./enums";
+import { AccountCategory, AccountType, ValueType } from "./enums";
 
 export type AccountData = {
   account_category: AccountCategory;
@@ -8,7 +8,7 @@ export type AccountData = {
   account_status: string; // Status is always ACTIVE
   value_type: ValueType; // Credit or debit values
   account_name: string; // Name of the account
-  account_type: string; // Didn't define it as Enum because could be anything and new types as they appear
+  account_type: AccountType; 
   account_type_bank?: string; // Empty string or specific bank information
   system_account?: string; // Empty string or specific system account like "DEBTORS", "CREDITORS"
   total_value: number; // Represents monetary values
