@@ -28,12 +28,10 @@ function appendToFile(text, dirPath = "./output", fileName = "result.txt") {
     const directoryPath = path.resolve(dirPath);
     const filePath = path.join(directoryPath, fileName);
 
-    // Ensure the directory exists
     if (!fs.existsSync(directoryPath)) {
       fs.mkdirSync(directoryPath, { recursive: true });
     }
 
-    // Append text to the file, creating it if necessary
     fs.appendFileSync(filePath, text + "\n", "utf-8");
     console.log(`Successfully wrote to file: ${filePath}`);
   } catch (error) {
