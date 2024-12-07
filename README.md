@@ -27,14 +27,13 @@ This project implements the RewardPay coding challenge, calculating and displayi
 ## Installation
 
 1. Clone the repository:
-
    ```bash
    git clone <repository-url>
    cd <repository-folder>
    ```
+````
 
 2. Install the dependencies:
-
    ```bash
    npm install
    ```
@@ -151,4 +150,3 @@ This project is licensed under the ISC License.
 
 You can copy this file and save it as `README.md` in your project directory. Let me know if you'd like further adjustments!
 ```
-````
