@@ -3,6 +3,7 @@ const {
   calculateExpenses,
   calculateRevenue,
   calculateGrossProfitMargin,
+  calculateNetProfitMargin,
 } = require("../../src/calculations/accountingMetrics");
 
 const data = [
@@ -123,5 +124,27 @@ describe("calculateGrossProfitMargin", () => {
     ];
     const result = calculateGrossProfitMargin(mockData);
     expect(result).toBe(0);
+  });
+});
+
+describe("calculateNetProfitMargin", () => {
+  it("should calculate the net profit margin using internally calculated revenue and expenses", () => {
+    const result = Math.floor(calculateNetProfitMargin(data));
+    expect(result).to.equal(71); // (350 - 100) / 350 * 100 = 71.43%
+  });
+
+  it("should calculate the net profit margin using pre-calculated revenue and expenses", () => {
+    const result = calculateNetProfitMargin([], 2000, 800);
+    expect(result).to.equal(60); // (2000 - 800) / 2000 * 100 = 60%
+  });
+
+  it("should return 0 when revenue is 0", () => {
+    const result = calculateNetProfitMargin(data, 0, 800);
+    expect(result).to.equal(0);
+  });
+
+  it("should handle negative expenses correctly", () => {
+    const result = calculateNetProfitMargin([], 2000, -500);
+    expect(result).to.equal(125); // (2000 - (-500)) / 2000 * 100 = 125%
   });
 });

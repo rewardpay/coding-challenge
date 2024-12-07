@@ -2,6 +2,7 @@ const {
   calculateRevenue,
   calculateExpenses,
   calculateGrossProfitMargin,
+  calculateNetProfitMargin,
 } = require("./calculations/accountingMetrics");
 const {
   readJsonFile,
@@ -23,10 +24,12 @@ function main() {
     const revenue = calculateRevenue(data);
     const expenses = calculateExpenses(data);
     const grossProfMarg = calculateGrossProfitMargin(data, revenue);
+    const netProfMarg = calculateNetProfitMargin(data, revenue, expenses);
 
     console.log(revenue);
     console.log(expenses);
     console.log(grossProfMarg);
+    console.log(netProfMarg);
 
     //
 
