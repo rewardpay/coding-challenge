@@ -20,8 +20,8 @@ function readJsonFile(filePath) {
 /**
  * Writes a line of text to the output file. Creates the directory/file if it doesn't exist.
  * @param {string} text - The text to append.
- * @param {string} dirPath - The path to the output directory.
- * @param {string} fileName - The name of the output file.
+ * @param {string} dirPath - The path to the output directory. Defaults to "./output"
+ * @param {string} fileName - The name of the output file. Defaults to "result.txt"
  */
 function appendToFile(text, dirPath = "./output", fileName = "result.txt") {
   try {
@@ -42,8 +42,8 @@ function appendToFile(text, dirPath = "./output", fileName = "result.txt") {
 
 /**
  * Clears the content of the output file if it exists.
- * @param {string} dirPath - The path to the output directory.
- * @param {string} fileName - The name of the output file.
+ * @param {string} dirPath - The path to the output directory. Defaults to "./output"
+ * @param {string} fileName - The name of the output file. Defaults to "result.txt"
  */
 function clearFile(dirPath = "./output", fileName = "result.txt") {
   try {
