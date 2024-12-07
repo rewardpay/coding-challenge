@@ -1,6 +1,6 @@
 Here is the `README.md` file for your project:
 
-````markdown
+```markdown
 # RewardPay Coding Challenge
 
 ## Overview
@@ -23,15 +23,16 @@ This project implements the RewardPay coding challenge, calculating and displayi
 
 - Node.js (>=14.x)
 - npm (>=6.x)
+```
 
 ## Installation
 
 1. Clone the repository:
+
    ```bash
    git clone [Repo-link](https://github.com/Srijan1231/coding-challenge.git)
    cd coding-challenge
    ```
-````
 
 2. Install the dependencies:
    ```bash
