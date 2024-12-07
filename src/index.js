@@ -1,7 +1,8 @@
 const {
   calculateRevenue,
   calculateExpenses,
-} = require("./calculations/totalValue");
+  calculateGrossProfitMargin,
+} = require("./calculations/accountingMetrics");
 const {
   readJsonFile,
   appendToFile,
@@ -21,9 +22,11 @@ function main() {
 
     const revenue = calculateRevenue(data);
     const expenses = calculateExpenses(data);
+    const grossProfMarg = calculateGrossProfitMargin(data, revenue);
 
     console.log(revenue);
     console.log(expenses);
+    console.log(grossProfMarg);
 
     //
 
