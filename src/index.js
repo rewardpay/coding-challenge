@@ -2,8 +2,9 @@ import {
   parseData,
   calculateRevenue,
   calculateExpenses,
+  calculateGrossProfitMargin,
 } from "./calculations.js";
-import { formatCurrency } from "./utils.js";
+import { formatCurrency, formatPercentage } from "./utils.js";
 
 import path from "path";
 import { fileURLToPath } from "url";
@@ -18,9 +19,11 @@ function main() {
 
   const revenue = calculateRevenue(data, "revenue");
   const expenses = calculateExpenses(data, "expense");
+  const grossProfitMargin = calculateGrossProfitMargin(data, revenue);
 
   console.log(`Revenue: ${formatCurrency(revenue)}`);
   console.log(`Expenses: ${formatCurrency(expenses)}`);
+  console.log(`Gross Profit Margin: ${formatPercentage(grossProfitMargin)}`);
 }
 
 main();

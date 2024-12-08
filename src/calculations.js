@@ -16,3 +16,12 @@ export function calculateExpenses(dataWrapper, category) {
     .filter((item) => item.account_category === category)
     .reduce((sum, item) => sum + item.total_value, 0);
 }
+
+export function calculateGrossProfitMargin(dataWrapper, revenue) {
+  const sales = dataWrapper.data
+    .filter(
+      (item) => item.account_type === "sales" && item.value_type === "debit"
+    )
+    .reduce((sum, item) => sum + item.total_value, 0);
+  return sales / revenue;
+}
