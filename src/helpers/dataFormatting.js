@@ -9,7 +9,10 @@ function formatCurrency(value) {
   if (isNaN(+value)) {
     throw new TypeError("Value must be a number");
   }
-  return `$${Math.floor(+value).toLocaleString("en-US")}`;
+
+  return value >= 0
+    ? `$${Math.floor(+value).toLocaleString("en-US")}`
+    : `-$${Math.abs(Math.floor(+value)).toLocaleString("en-US")}`;
 }
 
 /**

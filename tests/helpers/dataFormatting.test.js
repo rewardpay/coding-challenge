@@ -23,6 +23,9 @@ describe("formatCurrency", () => {
   it("should format 0 correctly", () => {
     expect(formatCurrency(0)).to.equal("$0");
   });
+  it("should handle negative number", () => {
+    expect(formatCurrency(-1234)).to.equal("-$1,234");
+  });
 });
 
 describe("formatPercentage", () => {

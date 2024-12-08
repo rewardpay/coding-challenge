@@ -38,6 +38,7 @@ function appendToFile(
     }
 
     fs.appendFileSync(filePath, text + "\n", "utf-8");
+    console.log(text);
   } catch (error) {
     console.error(`Error writing to file: ${error.message}`);
     throw error;

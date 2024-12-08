@@ -1,9 +1,11 @@
 const {
-  calculateRevenue,
-  calculateExpenses,
   calculateGrossProfitMargin,
   calculateNetProfitMargin,
-} = require("./calculations/accountingMetrics");
+} = require("./calculations/profitMetrics");
+const {
+  calculateRevenue,
+  calculateExpenses,
+} = require("./calculations/totalValueMetrics");
 const {
   calculateWorkingCapitalRatio,
 } = require("./calculations/workingCapitalRatio");
@@ -32,10 +34,14 @@ function main() {
     clearFile();
 
     //Add description header to the file
-    const date = new Intl.DateTimeFormat("en-UK").format(
-      new Date(balance_date)
-    );
-    appendToFile(`Accounting metrics calculated for ${date} in ${currency}\n`);
+    if (balance_date && currency) {
+      const date = new Intl.DateTimeFormat("en-UK").format(
+        new Date(balance_date)
+      );
+      appendToFile(
+        `Accounting metrics calculated for ${date} in ${currency}\n`
+      );
+    }
 
     //Calculate and save Revenue value
     const revenue = calculateRevenue(data);
@@ -70,15 +76,8 @@ function main() {
     );
 
     console.log(
-      `All metrics were calculated successfully. Check results in ${DATA_OUTPUT_DIR}/${DATA_OUTPUT_FILE_NAME}`
+      `All metrics were calculated successfully. Also results are stored in ${DATA_OUTPUT_DIR}/${DATA_OUTPUT_FILE_NAME}`
     );
-
-    //NOTE: For testing
-    // console.log(formatCurrency(revenue));
-    // console.log(formatCurrency(expenses));
-    // console.log(formatPercentage(grossProfMarg));
-    // console.log(formatPercentage(netProfMarg));
-    // console.log(formatPercentage(workingCapitalRatio));
   } catch (error) {
     console.error("Failed to load data:", error.message);
   }

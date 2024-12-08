@@ -14,9 +14,8 @@ This is a Node.js application that calculates 5 key financial metrics, including
 
 ## Assumptions During Development
 
-- Print results to the file instead of a simple console for better outcome usage and visibility
 - JavaScript selected. Assumed "of" is a typo of "or" in the `Please use JavaScript of TypeScript...` challenge overview
-- **Working Capital Ratio** was calculated exactly as it was given in the description. Potentially there is a typo of what should be subtracted in `liabilities` calculation. Given `credit` - `debit` but possible should be visa versa. In real project should be verified
+- **Working Capital Ratio** was calculated exactly as it was given in the description. Potentially there is a typo of what should be subtracted in `liabilities` calculation. Given `credit` - `debit`. In real project business logic should be re-verified before implementation
 
 ## Technologies Used
 
@@ -55,21 +54,21 @@ npm start
 
 ### Calculate Metrics:
 
-On running the app, it will read the `data.json` file from `data` folder, do the accounting metrics calculations and output key financial metrics to the `result.txt` file in `output` folder.
+On running the app, it will read the `data.json` file from `data` folder, do the accounting metrics calculations and output key financial metrics to the console and `result.txt` file in `output` folder.
 
-To view calculated metrics run
+To view calculated metrics from the file run
 
 ```bash
 cd output
 cat result.txt
 ```
 
-The result will come in this format. Note, this is just an example, not the exact calculations
+The result in console and the file will come in this format. Note, this is just an example, not the exact calculations
 
 ```
 Accounting metrics calculated for 14/09/2023 in AUD
 
-                  Revenue:  $42,151
+                  Revenue:  $42,151,652
                  Expenses:  $67,570
       Gross Profit Margin:  0.5%
         Net Profit Margin:  15.8%
@@ -83,7 +82,7 @@ It also includes header information about the currency and date
 Vitest was used for unit tests. To run unit tests suits:
 
 ```bash
-npm test
+npm run test
 ```
 
 ## Future Improvements
