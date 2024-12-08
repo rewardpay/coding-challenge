@@ -88,8 +88,32 @@ Net Profit Margin: 21%
 Working Capital Ratio: 95%
 ```
 
-# Dependencies
+# Implementation Details
+How to run project:
+1.Clone Repsitory
+git clone https://github.com/Muntasir07Isha/coding-challenge.git
 
-If your program requires a special way to compile or a specific version of a toolset, please be sure to include that in your running instructions.
+# Install Dependencies
 
-__Thank you and good luck!__
+2.npm install
+3.npm run build
+
+# Project Structure
+src/index.ts: Reads and parses the data.json file.
+src/calculation.ts: Contains the logic for calculating the metrics.
+src/calculation.test.ts: Contains unit tests for calculations.
+
+# Run Program for output
+4.node dist/calculation.js
+This command outputs the required metrics to the console, such as:
+Revenue: $32,431
+Expense: $36,530
+Gross Profit Margin: 0.0%
+Net Profit Margin: -12.6%
+working capital ratio :118.8%
+
+# Unit Testing
+5.npm test
+  Tested Calculations:
+Revenue Calculation: Ensures the correct summing of revenue values.
+Expense Calculation: Validates the correct summing of expense values.
