@@ -1,14 +1,19 @@
+import AccountInfo from "./components/Account/AccountInfo";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 
 export default function Home() {
   return (
-    <div>
+    <div className="layout">
+      <header>
+        <Header />
+      </header>
       <main>
-        <header>
-          <Header />
-        </header>
+        <AccountInfo />
       </main>
-      <footer></footer>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import React from "react";
 const Header = () => {
   return (
     <div
-      className="container-fluid d-flex flex-row justify-content-between h-10 p-3"
+      className="container-fluid d-flex flex-row justify-content-between p-3"
       style={{ backgroundColor: "var(--rp-dark-blue)" }}
     >
       <div>

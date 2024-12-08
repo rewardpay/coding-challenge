@@ -70,12 +70,11 @@ export const expense = (movements: AccountData[]): number => {
 // This is calculated in two steps: first by adding all the total_value fields where the account_type is set to sales and the value_type is set to debit; then dividing that by the revenue value calculated earlier to generate a percentage value.
 export const grossProfitMargin = (
   movements: AccountData[],
-  valueType: ValueType
 ) => {
   const filteredSales = filterByAccountAndValueType(
     movements,
     AccountType.SALES,
-    valueType
+    ValueType.DEBIT
   );
   const totalSales = filteredSales.reduce(
     (accumulator, sale) => accumulator + sale.total_value,

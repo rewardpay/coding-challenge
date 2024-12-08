@@ -1,0 +1,5 @@
+.accountStatement {
+  color: var(--rp-dark-blue);
+  border: none;
+  background-color: var(--rp-grey);
+}
