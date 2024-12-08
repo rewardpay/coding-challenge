@@ -1,4 +1,8 @@
-import { parseData, calculateRevenue } from "./calculations.js";
+import {
+  parseData,
+  calculateRevenue,
+  calculateExpenses,
+} from "./calculations.js";
 import { formatCurrency } from "./utils.js";
 
 import path from "path";
@@ -13,7 +17,10 @@ function main() {
   const data = parseData(dataFilePath);
 
   const revenue = calculateRevenue(data, "revenue");
+  const expenses = calculateExpenses(data, "expense");
+
   console.log(`Revenue: ${formatCurrency(revenue)}`);
+  console.log(`Expenses: ${formatCurrency(expenses)}`);
 }
 
 main();
