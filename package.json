@@ -22,6 +22,7 @@
   "homepage": "https://github.com/ashishpawar517/coding-challenge#readme",
   "dependencies": {
     "@types/node": "^22.10.1",
+    "currency.js": "^2.0.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   },
