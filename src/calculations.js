@@ -25,3 +25,7 @@ export function calculateGrossProfitMargin(dataWrapper, revenue) {
     .reduce((sum, item) => sum + item.total_value, 0);
   return sales / revenue;
 }
+
+export function calculateNetProfitMargin(revenue, expenses) {
+  return (revenue - expenses) / revenue;
+}

@@ -3,6 +3,7 @@ import {
   calculateRevenue,
   calculateExpenses,
   calculateGrossProfitMargin,
+  calculateNetProfitMargin,
 } from "./calculations.js";
 import { formatCurrency, formatPercentage } from "./utils.js";
 
@@ -20,10 +21,12 @@ function main() {
   const revenue = calculateRevenue(data, "revenue");
   const expenses = calculateExpenses(data, "expense");
   const grossProfitMargin = calculateGrossProfitMargin(data, revenue);
+  const netProfitMargin = calculateNetProfitMargin(revenue, expenses);
 
   console.log(`Revenue: ${formatCurrency(revenue)}`);
   console.log(`Expenses: ${formatCurrency(expenses)}`);
   console.log(`Gross Profit Margin: ${formatPercentage(grossProfitMargin)}`);
+  console.log(`Net Profit Margin: ${formatPercentage(netProfitMargin)}`);
 }
 
 main();
