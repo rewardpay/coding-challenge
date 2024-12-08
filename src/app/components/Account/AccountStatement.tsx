@@ -33,7 +33,10 @@ const AccountStatement = () => {
   return (
     <div className={`${styles.accountStatement} card w-100 m-4 px-4 py-2 my-6`}>
       <div>
-        <h3>Account Statement as of {formattedDate}</h3>
+        <h3>
+          Account Statement{" "}
+          {formattedDate === "NaN/NaN/NaN" ? "" : `as of  ${formattedDate}`}
+        </h3>
       </div>
       <div>
         <Statement
