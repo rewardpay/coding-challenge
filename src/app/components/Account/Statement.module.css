@@ -1,0 +1,15 @@
+.kpi {
+  background-color: var(--rp-grey);
+  color: var(--rp-dark-blue);
+  padding: 6px;
+  width: 60%;
+  margin-top: 50px;
+  margin-left: 10%;
+  font-weight: bolder;
+
+}
+
+.kpi p {
+  margin: 0;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,9 @@
+.movement {
+  background-color: var(--rp-grey);
+  color: var(--rp-dark-blue);
+  padding: 6px;
+}
+
+.movement p {
+  margin: 0;
+}

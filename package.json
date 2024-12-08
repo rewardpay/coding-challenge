@@ -10,6 +10,10 @@
     "test": "jest"
   },
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "bootstrap": "^5.3.3",
+>>>>>>> feature/frontend
     "next": "15.0.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
