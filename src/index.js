@@ -1,6 +1,11 @@
-const { parseData, calculateRevenue } = require("./calculations.js");
+import { parseData, calculateRevenue } from "./calculations.js";
+import { formatCurrency } from "./utils.js";
 
-const path = require("path");
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const dataFilePath = path.join(__dirname, "../data.json");
 
@@ -8,7 +13,7 @@ function main() {
   const data = parseData(dataFilePath);
 
   const revenue = calculateRevenue(data, "revenue");
-  console.log(revenue);
+  console.log(`Revenue: ${formatCurrency(revenue)}`);
 }
 
 main();
