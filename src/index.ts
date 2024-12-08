@@ -1,0 +1,28 @@
+import { parseAccountData } from './utils/parser';
+import { AccountingCalculator } from './service/calculator';
+import { Formatter } from './utils/formatter';
+
+function main() {
+    try {
+        // TODO: add support for command line arguments to add another file path
+        const data = parseAccountData('./data.json');
+        const calculator = new AccountingCalculator(data);
+
+        const revenue = calculator.calculateRevenue();
+        const expenses = calculator.calculateExpenses();
+        const grossProfitMargin = calculator.calculateGrossProfitMargin();
+        const netProfitMargin = calculator.calculateNetProfitMargin();
+        const workingCapitalRatio = calculator.calculateWorkingCapitalRatio();
+
+        console.log(`Revenue: ${Formatter.formatCurrency(revenue)}`);
+        console.log(`Expenses: ${Formatter.formatCurrency(expenses)}`);
+        console.log(`Gross Profit Margin: ${Formatter.formatPercentage(grossProfitMargin)}`);
+        console.log(`Net Profit Margin: ${Formatter.formatPercentage(netProfitMargin)}`);
+        console.log(`Working Capital Ratio: ${Formatter.formatPercentage(workingCapitalRatio)}`);
+    } catch (error) {
+        console.error('Error processing accounting data:', error);
+        process.exit(1);
+    }
+}
+
+main();

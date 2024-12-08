@@ -2,6 +2,7 @@ package-lock.json
 node_modules/
 .node_modules/
 built/*
+dist/*
 tests/cases/rwc/*
 tests/cases/perf/*
 !tests/cases/webharness/compilerToString.js
