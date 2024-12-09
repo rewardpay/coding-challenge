@@ -1,0 +1,20 @@
+{
+  "name": "coding-challenge",
+  "version": "1.0.0",
+  "description": "This repo contains the instructions and the data you need to complete the _RewardPay coding challenge_.  This challenge is not intended to be complex, but it is an opportunity for you to showcase your understanding and applying of good development practices.",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node main",
+    "dev": "nodemon main"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "assert": "^2.1.0",
+    "fs": "^0.0.1-security",
+    "mocha": "^11.0.1",
+    "nodemon": "^3.1.7"
+  }
+}
