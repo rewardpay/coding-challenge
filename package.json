@@ -1,0 +1,37 @@
+{
+  "name": "rewardpay-coding-challenge",
+  "version": "1.0.0",
+  "description": "rewardpay coding challenge solution by Aashish Pawar",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/index.ts",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashishpawar517/coding-challenge.git"
+  },
+  "keywords": [
+    "rewardpay",
+    "coding-challenge"
+  ],
+  "author": "Aashish Pawar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashishpawar517/coding-challenge/issues"
+  },
+  "homepage": "https://github.com/ashishpawar517/coding-challenge#readme",
+  "dependencies": {
+    "@types/node": "^22.10.1",
+    "currency.js": "^2.0.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5"
+  }
+}
