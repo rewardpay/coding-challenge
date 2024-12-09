@@ -1,11 +1,12 @@
 import { parseAccountData } from "./utils/parser";
 import { AccountingCalculator } from "./service/calculator";
 import { Formatter } from "./utils/formatter";
-
+import { argv } from "process";
 function main() {
   try {
-    // TODO: add support for command line arguments to add another file path
-    const data = parseAccountData("./data.json");
+    const filePath = argv[2] || "./data.json";
+
+    const data = parseAccountData(filePath);
     const calculator = new AccountingCalculator(data);
 
     const revenue = calculator.calculateRevenue();

@@ -62,18 +62,21 @@ describe("AccountingCalculator", () => {
   });
 
   test("calculateGrossProfitMargin returns correct percentage", () => {
-    // Sales debit (1000) / Revenue (1500) = 0.6667
-    expect(calculator.calculateGrossProfitMargin()).toBeCloseTo(0.6667, 4);
+    // Sales debit (1000) / Revenue (1500) = 66.66666666666666
+    expect(calculator.calculateGrossProfitMargin()).toBeCloseTo(
+      66.66666666666666,
+      4
+    );
   });
 
   test("calculateNetProfitMargin returns correct percentage", () => {
-    // (Revenue (1500) - Expenses (300)) / Revenue (1500) = 0.8
-    expect(calculator.calculateNetProfitMargin()).toBe(0.8);
+    // (Revenue (1500) - Expenses (300)) / Revenue (1500) = 0.8 * 100
+    expect(calculator.calculateNetProfitMargin()).toBe(0.8 * 100);
   });
 
   test("calculateWorkingCapitalRatio returns correct ratio", () => {
-    // Assets (2000 - 500 = 1500) / Liabilities (1000 - 200 = 800) = 1.875
-    expect(calculator.calculateWorkingCapitalRatio()).toBe(1.875);
+    // Assets (2000 - 500 = 1500) / Liabilities (1000 - 200 = 800) = 1.875 * 100
+    expect(calculator.calculateWorkingCapitalRatio()).toBe(1.875 * 100);
   });
 
   describe("Edge cases", () => {

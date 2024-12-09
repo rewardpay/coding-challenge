@@ -2,6 +2,7 @@ import fs from "fs";
 import { Account } from "../types/account";
 
 export function parseAccountData(filePath: string): Account[] {
+  // TODO: add support for large file loading using batch sizes
   try {
     const fileContent = fs.readFileSync(filePath, "utf-8");
     const jsonData = JSON.parse(fileContent);
