@@ -80,7 +80,8 @@ export const grossProfitMargin = (
     (accumulator, sale) => accumulator + sale.total_value,
     0
   );
-  const grossProfitMarginValue = totalSales / revenue(movements);
+  const totalRevenue = revenue(movements)
+  const grossProfitMarginValue = totalSales / totalRevenue;
   return grossProfitMarginValue;
 };
 

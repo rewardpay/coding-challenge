@@ -6,7 +6,11 @@
 // All percentage values must be formatted to one decimal digit and be prefixed with a % sign. Don't forget to multiply by 100 each time you're tasked with calculating a percentage value.
 
 export const formatCurrency = (value: number): string => {
-  return `$${Math.floor(value).toLocaleString()}`;
+  let roundedValue = Math.abs(value) < 1 ? 0 : Math.round(value); // Handle small values near zero
+  if (Object.is(roundedValue, -0)) {
+    roundedValue = 0; // Normalize -0 to 0
+  }
+  return `$${roundedValue.toLocaleString()}`;
 };
 
 export const parsePercentage = (percentage: number): string => {
