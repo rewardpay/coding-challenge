@@ -2,7 +2,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-# Folder Structure 
+### Folder Structure 
+```bash
 rp-coding-challenge/
 │
 ├── .eslintrc.json
@@ -20,6 +21,7 @@ rp-coding-challenge/
 └── src/
     └── app/
         └── (application code)
+```
 
 First, install all needed dependencies by running on terminal:
 
