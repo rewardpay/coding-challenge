@@ -57,7 +57,7 @@ describe('Financial Metrics Calculations', () => {
   });
 
   describe('Gross Profit Margin Calculation', () => {
-    test('should calculate gross profit margin as a percentage', () => {
+    test('should calculate gross profit margin correctly', () => {
       // Based on sales value / revenue * 100
       const expectedGrossMargin = 30; // Since all sales are gross profit
       expect(metrics.grossProfitMargin).toBe(expectedGrossMargin);
@@ -65,7 +65,7 @@ describe('Financial Metrics Calculations', () => {
   });
 
   describe('Net Profit Margin Calculation', () => {
-    test('should calculate net profit margin as a percentage', () => {
+    test('should calculate net profit margin correctly', () => {
       // (Revenue - Expenses) / Revenue * 100
       const expectedNetMargin = ((1000 - 300) / 1000) * 100; // 70%
       expect(metrics.netProfitMargin).toBe(expectedNetMargin);
