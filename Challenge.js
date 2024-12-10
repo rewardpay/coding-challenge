@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 // Function to calculate revenue
 function calculateRevenue(data) {
     return data
@@ -96,3 +98,10 @@ module.exports = {
     formatPercentage,
     main,
 };
+
+// Read data.json
+const rawData = fs.readFileSync('data.json', 'utf-8');
+const jsonData = JSON.parse(rawData);
+
+// Call the main function with the data
+main(jsonData.data);
