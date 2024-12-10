@@ -14,12 +14,12 @@ cd coding-challenge
 ```bash
 npm install
 ```
-##Usage
+## Usage
 Run the project:
 ```bash
 node challenge.js
 ```
-###Outputs
+### Outputs
 The program calculates and prints the following metrics:
 
 1. Revenue
