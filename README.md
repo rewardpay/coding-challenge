@@ -58,10 +58,7 @@ The program calculates and prints the following metrics:
 - I particularly enjoyed implementing the percentage formatting, as it required careful consideration of both precision and user-friendly output.
 - If given more time, I would focus on improving error handling and adding additional test cases for edge scenarios.
 
-**Testing**
-```markdown
 ## Testing
-```
 Run the unit tests with:
 ```bash
 npm test
