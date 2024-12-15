@@ -1,0 +1,16 @@
+{
+  "name": "coding-challenge",
+  "version": "1.0.0",
+  "description": "To run this project, ensure you have Node.js installed on your machine.",
+  "main": "Challenge.js",
+  "scripts": {
+    "start": "node challenge.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
